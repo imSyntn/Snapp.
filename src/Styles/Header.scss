@@ -1,0 +1,63 @@
+Header {
+    // border: 1px solid white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-inline: 100px;
+
+    >h1 {
+        font-family: "Caveat", cursive;
+        font-optical-sizing: auto;
+        font-style: normal;
+        font-size: 3rem;
+        // background: rgb(255, 46, 0);
+        // background: linear-gradient(90deg, rgba(255, 46, 0, 1) 0%, rgba(255, 94, 0, 1) 13%, rgba(255, 230, 0, 1) 50%, rgba(0, 212, 255, 1) 100%);
+        // color: transparent;
+        // background-size: 2000% auto;
+        // background-clip: text;
+        // animation: logoAnimation 2s linear infinite alternate;
+        // @keyframes logoAnimation {
+        //     0% {
+        //         background-position: 0% 50%;
+        //     }
+        //     100% {
+        //         background-position: 100% 50%;
+        //     }
+        // }
+    }
+
+    >ul {
+        list-style: none;
+        display: flex;
+        width: 550px;
+        justify-content: space-between;
+
+        >li {
+            font-weight: 500;
+            font-size: 1.05rem;
+            position: relative;
+            cursor: pointer;
+            &::after {
+                content: '';
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                border-block: 2px solid white;
+                border-top-style: dashed;
+                border-bottom-style: dashed;
+                height: 200%;
+                width: 200%;
+                opacity: 0;
+                transition: all 0.3s;
+            }
+            &:hover {
+                &::after {
+                    height: 150%;
+                    width: 150%;
+                    opacity: 1;
+                }
+            }
+        }
+    }
+}
