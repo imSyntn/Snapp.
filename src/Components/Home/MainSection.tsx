@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from 'react'
-import '../Styles/MainSection.scss'
-import { NameDescObj } from '../App.types'
+import '../../Styles/Home/MainSection.scss'
+import { NameDescObj } from '../../App.types'
+// import { motion } from 'framer-motion'
 
 const MainSection = () => {
 
@@ -51,6 +52,7 @@ const MainSection = () => {
                     <div className="imgDiv" ref={imgDivRef}>
                         {
                             nameDescArr.map((item, index) => (
+                                // <motion.img initial={{scale: 0.7, opacity: 0.5}} whileInView={{scale: 1, opacity: 1}} transition={{duration: 0.3}} src={item.img} key={item.name+index} alt="" />
                                 <img src={item.img} key={item.name+index} alt="" />
                             ))
                         }

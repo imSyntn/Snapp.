@@ -9,6 +9,14 @@
 
     >h1 {
         font-size: 3rem;
+        background: linear-gradient(120deg, rgb(255, 255, 255) 0%, rgba(135, 135, 135, 0.288) 50%, rgb(255, 255, 255) 100%);
+        color: transparent;
+        background-size: 200% auto;
+        // background-position: 0% 100%;
+        background-clip: text;
+        animation: logoAnimation 1.5s linear infinite alternate-reverse;
+        // animation-fill-mode:;
+        // animation-delay: 2s;
     }
 
     >p {
@@ -70,5 +78,15 @@
             //     }
             // }
         }
+    }
+}
+
+@keyframes logoAnimation {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    100% {
+        background-position: 100% 50%;
     }
 }

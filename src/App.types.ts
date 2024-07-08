@@ -1,3 +1,5 @@
+import { IconType } from "react-icons"
+
 type ImageLinks = {
     full: string,
     regular: string,
@@ -11,4 +13,10 @@ export interface NameDescObj {
     name: string,
     desc: string,
     img: string
+}
+export interface contactOptionsArr {
+    type: string,
+    details: string,
+    data: string,
+    Icon: IconType
 }

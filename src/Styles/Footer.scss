@@ -1,0 +1,77 @@
+footer {
+    // border: 1px solid red;
+    padding-inline: 100px;
+    padding-bottom: 20px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+
+    >h1 {
+        font-family: "Caveat", cursive;
+        font-optical-sizing: auto;
+        font-style: normal;
+        font-size: 3rem;
+        span {
+            color: red;
+        }
+    }
+
+    >.icons {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+        flex-direction: column;
+        -webkit-box-align: end;
+        -ms-flex-align: end;
+        align-items: flex-end;
+
+        svg {
+            font-size: 35px;
+            margin: 10px;
+            fill: gray;
+
+            &:hover {
+                fill: salmon;
+            }
+        }
+
+        .heart {
+            &:hover {
+                fill: salmon;
+            }
+        }
+
+        .white {
+            &:hover {
+                fill: rgb(255, 255, 255);
+            }
+        }
+
+        p {
+            text-align: right;
+            fill: gray;
+            font-size: 1.2rem;
+
+            >a {
+                text-decoration: none;
+                // color: rgb(191, 244, 255);
+                color: rgb(255, 144, 119);
+                // color: #fff2aa;
+                // font-weight: bold;
+                letter-spacing: 1px;
+            }
+        }
+
+    }
+}

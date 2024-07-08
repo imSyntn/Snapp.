@@ -1,24 +1,28 @@
-import { useState } from 'react'
+import { Suspense, lazy, useState } from 'react'
 import Header from './Components/Header'
-import HeroSection from './Components/HeroSection'
-import ImageCarousel from './Components/ImageCarousel'
 import Footer from './Components/Footer'
-import MainSection from './Components/MainSection'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import Home from './Components/Home'
+
+// const Home = lazy(()=> import('./Components/Home'))
+const Explore = lazy(()=> import('./Components/Explore/Explore'))
+const About = lazy(()=> import('./Components/About'))
+
 
 function App() {
   const [count, setCount] = useState(0)
 
   return (
     <>
-      <Header />
-      <HeroSection />
-      <div className="carousalWrapper">
-        <ImageCarousel />
-        <ImageCarousel />
-      </div>
-      <MainSection />
-
-      <Footer />
+      <BrowserRouter>
+        <Header />
+        <Routes>
+          <Route path='/' element={<Home />} />
+          <Route path='/explore' element={<Suspense><Explore /></Suspense>} />
+          <Route path='/about' element={<Suspense><About /></Suspense>} />
+        </Routes>
+        <Footer />
+      </BrowserRouter>
     </>
   )
 }

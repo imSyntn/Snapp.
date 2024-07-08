@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
-import '../Styles/ImageCarousel.scss'
-import { RandomImage } from '../App.types'
+import '../../Styles/Home/ImageCarousel.scss'
+import { RandomImage } from '../../App.types'
 
 
 const ImageCarousel = () => {
