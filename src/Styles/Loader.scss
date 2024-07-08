@@ -1,0 +1,12 @@
+.Loader {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    >video {
+        // border: 1px solid white;
+        width: 150px;
+        height: 150px;
+    }
+}
