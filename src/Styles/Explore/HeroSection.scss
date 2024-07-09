@@ -1,0 +1,101 @@
+.HeroSection {
+    // height: 100px;
+    // border: 1px solid red;
+
+    >.catagories {
+        height: 60px;
+        width: 100%;
+        // border: 1px solid greenyellow;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        position: relative;
+
+        // padding: 20px;
+        >.slider {
+            position: absolute;
+            height: 60px;
+            width: 50px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(128, 128, 128, 0.132);
+            backdrop-filter: blur(10px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            user-select: none;
+            &:nth-child(1){
+                left: 0;
+            }
+            &:nth-last-child(1){
+                right: 0;
+            }
+            svg {
+                font-size: 1.5rem;
+            }
+        }
+
+        .topicsDiv {
+            width: 100%;
+            display: flex;
+            overflow-x: auto;
+            padding-inline: 20px;
+            scroll-behavior: smooth;
+            &::-webkit-scrollbar {
+                display: none;
+            }
+            p {
+                margin-inline: 15px;
+                &:nth-child(1) {
+                    margin-left: 50px;
+                }
+                &:nth-last-child(1) {
+                    margin-right: 50px;
+                }
+            }
+        }
+    }
+    >.search-Text {
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+        padding: 100px;
+        >.text {
+            width: 400px;
+            >h1 {
+                font-size: 3rem;
+                font-weight: 400;
+                margin-bottom: 10px;
+            }
+            >p {
+                font-size: 1.2rem;
+            }
+        }
+        >.searchDiv {
+            width: 400px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            // border: 1px solid rgb(217, 255, 0);
+            border-radius: 25px;
+            background: white;
+            overflow: hidden;
+            >svg {
+                width: 30px;
+                font-size: 30px;
+                margin-left: 10px;
+                margin-right: 5px;
+                fill: gray;
+            }
+            >input {
+                height: 100%;
+                width: calc(100% - 45px);
+                border: none;
+                outline: none;
+                font-size: 25px;
+                padding-left: 5px;
+            }
+        }
+    }
+}

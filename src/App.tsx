@@ -6,7 +6,7 @@ import Home from './Components/Home'
 import Loader from './Components/Loader'
 
 // const Home = lazy(()=> import('./Components/Home'))
-const Explore = lazy(() => import('./Components/Explore/Explore'))
+const Explore = lazy(() => import('./Components/Explore'))
 const About = lazy(() => import('./Components/About'))
 
 
@@ -14,7 +14,7 @@ function App() {
   const [isLoading, setIsLoading] = useState<boolean>(true)
 
   useEffect(() => {
-    setIsLoading(false)
+    setTimeout(()=> setIsLoading(false), 1500)
    }, [])
 
   return (

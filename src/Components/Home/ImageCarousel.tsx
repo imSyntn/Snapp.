@@ -40,7 +40,7 @@ const ImageCarousel = () => {
         //   </div>
         // ))
         new Array(10).fill(1).map((item, index) => (
-          <div key={index}>
+          <div key={item*index}>
             <img src='https://images.unsplash.com/photo-1717699967168-9ccd317a0524?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w2MzAzNTF8MHwxfHJhbmRvbXx8fHx8fHx8fDE3MjAzNjM2NTF8&ixlib=rb-4.0.3&q=80&w=1080' alt="" />
             {/* <img src={item.urls.small} alt="" /> */}
           </div>
