@@ -1,16 +1,23 @@
 @import './Variables.scss';
-Header {
+
+.responsiveMenu {
+    display: none;
+}
+header {
     // border: 1px solid white;
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding-inline: $paddingInline;
+    position: relative;
+    z-index: 5;
 
     >h1 {
         font-family: "Caveat", cursive;
         font-optical-sizing: auto;
         font-style: normal;
         font-size: 3rem;
+
         span {
             color: red;
         }
@@ -74,6 +81,81 @@ Header {
                 }
             }
         }
+    }
 
+    >.menuBar {
+        display: none;
+        cursor: pointer;
+        z-index: 5;
+        svg {
+            width: 40px;
+            height: 40px;
+    
+            &:hover {
+                path {
+                    stroke-dasharray: 1000;
+                    stroke-dashoffset: 1000;
+                    animation: svgAnimation 7s forwards;
+                }
+    
+                @keyframes svgAnimation {
+                    to {
+                        stroke-dashoffset: 0;
+                    }
+                }
+            }
+        }
+    }
+    .circle {
+        display: none;
+        position: absolute;
+        top: -500px;
+        right: -500px;
+        width: 500px;
+        height: 500px;
+        border: none;
+        border-radius: 50%;
+        background: red;
+        z-index: 1;
+        transition: all 1s;
+    }
+    .view {
+        top: -200px;
+        right: -150px;
+        // transform: scale(3);
+        transition: all 0.2s;
+    }
+}
+
+@media screen and (max-width: 900px) {
+    header {
+        ul {
+            display: none;
+        }
+        .menuBar {
+            display: block;
+        }
+        .circle {
+            display: block;
+        }
+    }
+    .responsiveMenu {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: end;
+        justify-content: space-evenly;
+        padding-inline: $paddingInline;
+        // background: yellow;
+        // border: 1px solid red;
+        overflow: hidden;
+        transition: all 0.3s;
+        z-index: 5;
+        >a {
+            text-decoration: none;
+            font-size: 1.05rem;
+            font-weight: 500;
+            color: rgb(255, 255, 255);
+        }
     }
 }
