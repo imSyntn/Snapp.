@@ -1,4 +1,26 @@
+@import '../Variables.scss';
 .ResultImages {
-    border: 1px solid #FFBF26;
-    height: 300px;
+    height: fit-content;
+    // border: 1px solid #FFBF26;
+    padding-inline: $paddingInline;
+    columns: 3;
+    // column-gap: ;
+    // gap: 20px;
+
+    >img {
+        width: calc((100vw - 200px)/3);
+        break-inside: avoid;
+        // margin: 2.5px;
+        transition: all 0.3s;
+        &:hover {
+            filter: brightness(50%);
+        }
+    }
+
+
+    // >.scrollLoader {
+    //     border: 1px solid red;
+    //     width: calc(100vw - 200px);
+    //     break-inside: avoid-column;
+    // }
 }

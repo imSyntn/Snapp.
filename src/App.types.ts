@@ -5,9 +5,14 @@ type ImageLinks = {
     regular: string,
     small: string
 }
-export interface RandomImage {
+export interface ResultProp {
     id: string,
-    urls : ImageLinks
+    slug: string,
+    urls : ImageLinks,
+    title: string,
+    description: string,
+    width: number,
+    height: number
 }
 export interface NameDescObj {
     name: string,
@@ -20,3 +25,13 @@ export interface contactOptionsArr {
     data: string,
     Icon: IconType
 }
+
+export interface TopicType {
+    id: string,
+    title: string,
+    description: string
+}
+export interface SearchType {
+    topic: TopicType,
+    searchVal: string
+  }

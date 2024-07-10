@@ -1,6 +1,8 @@
+@import '../Variables.scss';
 .heroSection {
     height: 350px;
     padding-top: 100px;
+    padding-inline: $paddingInline;
     // border: 1px solid rgb(255, 255, 255);
     display: flex;
     flex-direction: column;
@@ -43,6 +45,7 @@
             background-clip: padding-box, border-box;
             transition: all 0.3s;
             border-radius: 25px;
+            cursor: pointer;
 
             &:hover {
                 background-color: rgba(111, 76, 255, 0.35);

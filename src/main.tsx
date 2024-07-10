@@ -5,9 +5,10 @@ import './index.css'
 import SmoothScroll from './Utils/SmoothScroll.tsx'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
-  <React.StrictMode>
+  // <React.StrictMode>
     <SmoothScroll>
       <App />
     </SmoothScroll>
-  </React.StrictMode>,
+  //</React.StrictMode> 
+  ,
 )

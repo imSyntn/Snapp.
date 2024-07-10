@@ -1,9 +1,10 @@
+@import './Variables.scss';
 Header {
     // border: 1px solid white;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding-inline: 100px;
+    padding-inline: $paddingInline;
 
     >h1 {
         font-family: "Caveat", cursive;

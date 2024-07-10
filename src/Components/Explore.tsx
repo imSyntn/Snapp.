@@ -1,13 +1,38 @@
-import {} from 'react'
+import { createContext, useState } from 'react'
 import '../Styles/Explore/Explore.scss'
 import HeroSection from './Explore/HeroSection'
 import ResultImages from './Explore/ResultImages'
+import { SearchType } from '../App.types'
+// import Loader from './Loader'
+
+interface SearchContextType {
+  search: SearchType,
+  setSearch: React.Dispatch<React.SetStateAction<SearchType>>
+}
+
+export const searchContext = createContext<SearchContextType | undefined>(undefined);
 
 const Explore = () => {
+
+  const [search, setSearch] = useState<SearchType>({
+    topic: {
+      id: '',
+      title: '',
+      description: ''
+    },
+    searchVal: ''
+  })
+
+  // useEffect(() => {
+  //   console.log(search)
+  // }, [search])
+
   return (
     <div className='Explore'>
-      <HeroSection />
-      <ResultImages />
+      <searchContext.Provider value={{ search, setSearch }}>
+        <HeroSection />
+        <ResultImages />
+      </searchContext.Provider>
     </div>
   )
 }

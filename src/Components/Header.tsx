@@ -89,7 +89,7 @@ const Header = () => {
          to={'/login'}><li>Login</li></Link>
           */}
           {
-            navArray.map((item,index)=> (
+            navArray.map((item)=> (
               <Link to={item.pathName} key={item.name}><li style={(item.pathName === location)? {color: 'gray'} : {}}>{item.name}</li></Link>
             ))
           }

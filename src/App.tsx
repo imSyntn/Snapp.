@@ -1,4 +1,5 @@
 import { Suspense, lazy, useState, useEffect } from 'react'
+import './Styles/Loader.scss'
 import Header from './Components/Header'
 import Footer from './Components/Footer'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
@@ -14,14 +15,16 @@ function App() {
   const [isLoading, setIsLoading] = useState<boolean>(true)
 
   useEffect(() => {
-    setTimeout(()=> setIsLoading(false), 1500)
-   }, [])
+    setTimeout(() => setIsLoading(false), 1500)
+  }, [])
 
   return (
     <>
       {
         isLoading ? (
-          <Loader />
+          <div className="Loader">
+            <Loader />
+          </div>
         ) : (
           <BrowserRouter>
             <Header />

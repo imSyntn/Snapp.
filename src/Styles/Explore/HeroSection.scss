@@ -1,3 +1,4 @@
+@import '../Variables.scss';
 .HeroSection {
     // height: 100px;
     // border: 1px solid red;
@@ -25,12 +26,15 @@
             justify-content: center;
             cursor: pointer;
             user-select: none;
-            &:nth-child(1){
+
+            &:nth-child(1) {
                 left: 0;
             }
-            &:nth-last-child(1){
+
+            &:nth-last-child(1) {
                 right: 0;
             }
+
             svg {
                 font-size: 1.5rem;
             }
@@ -42,36 +46,49 @@
             overflow-x: auto;
             padding-inline: 20px;
             scroll-behavior: smooth;
+
             &::-webkit-scrollbar {
                 display: none;
             }
+
             p {
+                text-wrap: nowrap;
                 margin-inline: 15px;
+                cursor: pointer;
+
                 &:nth-child(1) {
                     margin-left: 50px;
                 }
+
                 &:nth-last-child(1) {
                     margin-right: 50px;
                 }
             }
         }
     }
+
     >.search-Text {
         display: flex;
         align-items: center;
-        justify-content: space-evenly;
-        padding: 100px;
+        justify-content: space-between;
+        padding: $paddingInline;
+        // border: 1px solid salmon;
+
         >.text {
             width: 400px;
+            // border: 1px solid orange;
+
             >h1 {
                 font-size: 3rem;
                 font-weight: 400;
                 margin-bottom: 10px;
             }
+
             >p {
                 font-size: 1.2rem;
             }
         }
+
         >.searchDiv {
             width: 400px;
             height: 50px;
@@ -81,20 +98,45 @@
             border-radius: 25px;
             background: white;
             overflow: hidden;
-            >svg {
-                width: 30px;
-                font-size: 30px;
-                margin-left: 10px;
-                margin-right: 5px;
-                fill: gray;
-            }
+
             >input {
                 height: 100%;
-                width: calc(100% - 45px);
+                width: calc(100% - 50px);
                 border: none;
                 outline: none;
-                font-size: 25px;
-                padding-left: 5px;
+                font-size: 27px;
+                padding-left: 20px;
+            }
+
+            >.svgWrapper {
+                width: 50px;
+                background: #dedede;
+
+                svg {
+                    width: 30px;
+                    // font-size: 30px;
+                    margin-left: 8px;
+                    // margin-right: 5px;
+                    // fill: gray;
+                    cursor: pointer;
+                }
+
+                &:hover {
+                    svg {
+                        path {
+                            stroke-dasharray: 1000;
+                            /* Adjust this value as needed */
+                            stroke-dashoffset: 1000;
+                            animation: svgAnimation 5s forwards;
+                        }
+
+                        @keyframes svgAnimation {
+                            to {
+                                stroke-dashoffset: 0;
+                            }
+                        }
+                    }
+                }
             }
         }
     }

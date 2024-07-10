@@ -1,6 +1,7 @@
+@import './Variables.scss';
 .About {
     min-height: calc(100vh - 165px);
-    padding-inline: 100px;
+    padding-inline: $paddingInline;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;

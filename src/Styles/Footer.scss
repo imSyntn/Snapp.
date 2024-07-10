@@ -1,6 +1,7 @@
+@import './Variables.scss';
 footer {
     // border: 1px solid red;
-    padding-inline: 100px;
+    padding-inline: $paddingInline;
     padding-bottom: 20px;
     display: -webkit-box;
     display: -ms-flexbox;

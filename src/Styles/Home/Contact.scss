@@ -1,6 +1,7 @@
+@import '../Variables.scss';
 .ContactSection {
     // border: 1px solid red;
-    padding-inline: 100px;
+    padding-inline: $paddingInline;
     padding-bottom: 70px;
     
     >h1 {

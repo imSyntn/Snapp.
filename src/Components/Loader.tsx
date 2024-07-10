@@ -13,9 +13,9 @@ import animationData from '../assets/Animation - 1720453391314.json';
 const Loader = () => {
 
     return (
-        <div className='Loader'>
-             <Player src={animationData} autoplay loop />
-        </div>
+        // <div className='Loader'>
+             <Player src={animationData} autoplay loop style={{ height: '300px', width: '300px' }} />
+        // </div>
     )
 }
 
