@@ -1,18 +1,41 @@
 import { IconType } from "react-icons"
 
 type ImageLinks = {
+    raw: string,
     full: string,
     regular: string,
     small: string
 }
+type UserProp = {
+    first_name: string,
+    id: string,
+    last_name: string,
+    links: { html: string },
+    name: string,
+    profile_image: { medium: string },
+    social: {
+        instagram_username: string,
+        portfolio_url: string,
+        twitter_username: string,
+        paypal_email: string
+    },
+    updated_at: string,
+    username: string,
+}
 export interface ResultProp {
     id: string,
     slug: string,
-    urls : ImageLinks,
+    urls: ImageLinks,
     title: string,
     description: string,
     width: number,
-    height: number
+    height: number,
+    alt_description: string,
+    created_at: string,
+    downloads: string,
+    views: number,
+    user: UserProp,
+    links: {download: string}
 }
 export interface NameDescObj {
     name: string,
@@ -34,4 +57,4 @@ export interface TopicType {
 export interface SearchType {
     topic: TopicType,
     searchVal: string
-  }
+}

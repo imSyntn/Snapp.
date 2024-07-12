@@ -1,4 +1,5 @@
 @import '../Variables.scss';
+
 .HeroSection {
     // height: 100px;
     // border: 1px solid red;
@@ -11,6 +12,7 @@
         align-items: center;
         justify-content: space-between;
         position: relative;
+        // z-index: 5;
 
         // padding: 20px;
         >.slider {
@@ -47,6 +49,10 @@
             padding-inline: 20px;
             scroll-behavior: smooth;
 
+            @media screen and (max-width: 900px) {
+                padding: 0px;
+            }
+
             &::-webkit-scrollbar {
                 display: none;
             }
@@ -72,16 +78,20 @@
         align-items: center;
         justify-content: space-between;
         padding: $paddingInline;
+
         // border: 1px solid salmon;
+        @media screen and (max-width: 900px) {
+            padding: $paddingInlineRespinsive;
+        }
 
         >.text {
-            width: 400px;
+            // width: 400px;
             // border: 1px solid orange;
 
             >h1 {
                 font-size: 3rem;
                 font-weight: 400;
-                margin-bottom: 10px;
+                margin-right: 10px;
             }
 
             >p {
@@ -136,6 +146,19 @@
                         }
                     }
                 }
+            }
+        }
+        @media screen and (max-width: 600px) {
+            // // font-size: 2rem;
+            flex-direction: column;
+            // margin-right: 10px;
+            >.text {
+                >h1 {
+                    margin: 0 0 10px 0;
+                }
+            }
+            >.searchDiv {
+                width: 100%;
             }
         }
     }

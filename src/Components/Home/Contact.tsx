@@ -10,17 +10,17 @@ const Contact = () => {
     const contactOptionsArr: contactOptionsArr[] = [{
         type: 'Email',
         details: 'We aim to respond to all messages within 24 hours.',
-        data: 'contact@imagediscovery.com',
+        data: 'imsyntn@gmail.com',
         Icon: MdEmail
     },{
         type: 'Phone',
         details: 'Follow us on social media for updates and inspiration.',
-        data: '+1-800-123-4567',
+        data: '+91 8768954027',
         Icon: ImPhone
     },{
         type: 'Office',
         details: 'Join our community and discover the world through images.',
-        data: '123 Main Street, City, Country',
+        data: 'Kolkata',
         Icon: FaLocationDot
     },]
 
@@ -34,7 +34,7 @@ const Contact = () => {
                     <div className="card" key={item.type}>
                         <item.Icon />
                         <h1>{item.type}</h1>
-                        <p>{item.details}</p>
+                        {/* <p>{item.details}</p> */}
                         <p><b><i>{item.data}</i></b></p>
                     </div>
                 ))

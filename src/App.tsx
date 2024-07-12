@@ -30,9 +30,9 @@ function App() {
             <Header />
             <Routes>
               <Route path='/' element={<Home />} />
-              <Route path='/explore' element={<Suspense><Explore /></Suspense>} />
-              <Route path='/about' element={<Suspense><About /></Suspense>} />
-              <Route path='/about' element={<Suspense><About /></Suspense>} />
+              <Route path='/explore' element={<Suspense fallback={<div className="Loader"><Loader /></div>}><Explore /></Suspense>} />
+              <Route path='/about' element={<Suspense fallback={<div className="Loader"><Loader /></div>}><About /></Suspense>} />
+              <Route path='/about' element={<Suspense fallback={<div className="Loader"><Loader /></div>}><About /></Suspense>} />
             </Routes>
             <Footer />
           </BrowserRouter>

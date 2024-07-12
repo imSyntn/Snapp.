@@ -93,17 +93,18 @@ const Header = () => {
             ))
           }
         </ul>
-        <div className="menuBar" onClick={() => setShowMenu(prev => !prev)}>
+        <div className="menuBar">
+          <div className={`circle ${showMenu ? 'view' : ''}`}></div>
           {
             !showMenu && (
-              <svg width="800px" height="800px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <svg onClick={() => setShowMenu(prev => !prev)} width="800px" height="800px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M4 6H20M4 12H14M4 18H9" stroke="#fff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
             )
           }
           {
             showMenu && (
-              <svg className='showingMenu' width="800px" height="800px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <svg onClick={() => setShowMenu(prev => !prev)} className='showingMenu' width="800px" height="800px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <g id="Menu / Menu_Alt_01">
                   <path id="Vector" d="M12 17H19M5 12H19M5 7H19" stroke="#fff" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                 </g>
@@ -111,9 +112,8 @@ const Header = () => {
             )
           }
         </div>
-        <div className={`circle ${showMenu? 'view' : ''}`}></div>
       </header>
-      <div className="responsiveMenu" style={showMenu ? {height: '200px'} : {height: "0px"}}>
+      <div className="responsiveMenu" style={showMenu ? { height: '200px' } : { height: "0px" }}>
         {
           navArray.map((item) => (
             <Link to={item.pathName} key={item.name} style={(item.pathName === location) ? { color: 'black' } : {}}>{item.name}</Link>

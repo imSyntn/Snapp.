@@ -3,7 +3,7 @@ main {
     // background: rgb(114, 85, 85);
 
     .featureBasedImageSection {
-        height: 400px;
+        // height: 400px;
         // border: 1px solid rgb(236, 14, 14);
         // margin-inline: 100px;
         // background: rgb(49, 49, 49);
@@ -16,7 +16,7 @@ main {
             height: 400px;
             position: relative;
             // background: red;
-            margin-right: 50px;
+            // margin-right: 50px;
             overflow: hidden;
 
             >.imgDiv {
@@ -31,11 +31,13 @@ main {
                 >img {
                     width: 500px;
                     height: 400px;
+
                     // margin-block: 5px;
                     &::after {
                         content: '';
                         height: 100;
                     }
+
                     &:nth-child(even) {
                         margin-block: 5px;
                     }
@@ -45,15 +47,58 @@ main {
 
         >.textDiv {
             margin-left: 50px;
-            // border: 1px solid red;
+            margin-block: 50px;
+            // border: 1px solid rgb(0, 255, 8);
             display: flex;
             flex-direction: column;
-            margin-block: 50px;
             justify-content: space-between;
 
             >.imgChangingButton {
                 cursor: pointer;
                 padding-left: 10px;
+            }
+        }
+
+        @media screen and (max-width: 970px) {
+            flex-direction: column;
+            align-items: center;
+
+            >.imgDivWrapper {
+                // margin-right: 50px;
+
+            }
+
+            >.textDiv {
+                flex-direction: row;
+                margin: 0;
+                margin-top: 20px;
+
+                // @media screen and (max-width:650px) {
+                .imgChangingButton {
+                    h1 {
+                        font-size: 1rem;
+                    }
+
+                    p {
+                        font-size: 1rem;
+                    }
+                }
+
+                // }
+            }
+        }
+
+        @media screen and (max-width: 503px) {
+            >.imgDivWrapper {
+                width: 100vw;
+                height: 100vw;
+
+                >.imgDiv {
+                    >img {
+                        width: 100vw;
+                        height: 100vw;
+                    }
+                }
             }
         }
     }
@@ -77,39 +122,62 @@ main {
             justify-content: space-evenly;
             transform-origin: center;
             transition: all 0.3s;
-            
+
             >h1 {
                 font-size: 2.5rem;
+                text-align: center;
             }
+
             >p {
                 font-size: 1.2rem;
+            }
+
+            @media screen and (max-width: 600px) {
+                >h1 {
+                    font-size: 2rem;
+                }
+
+                >p {
+                    font-size: 1rem;
+                }
             }
 
             &:nth-child(1) {
                 background: #007bffac;
                 transform: translate(-50%, -50%) rotate(1deg);
             }
+
             &:nth-child(2) {
                 background: #FFFF00;
                 transform: translate(-50%, -50%) rotate(-1deg);
             }
+
             &:nth-child(3) {
                 background: #ff8800ac;
                 transform: translate(-50%, -50%) rotate(0deg);
             }
         }
 
-        
+
         &:hover {
             .banner {
+                // h1 {
+                //     // background-image: linear-gradient(to top, #ff0844 0%, #ffb199 100%);
+                //     background-image: linear-gradient(to right, #92fe9d 0%, #00c9ff 100%);
+                //     color: transparent;
+                //     background-clip: text;
+                // }
+
                 &:nth-child(1) {
                     background: #007bff;
                     transform: translate(-50%, -50%) rotate(3deg) skewX(-5deg);
                 }
+
                 &:nth-child(2) {
                     background: #ff5e00;
                     transform: translate(-50%, -50%) rotate(-3deg) skewX(5deg);
                 }
+
                 &:nth-child(3) {
                     background: white;
                     transform: translate(-50%, -50%) rotate(0deg) skewX(-5deg);

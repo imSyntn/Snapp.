@@ -1,26 +1,109 @@
 @import '../Variables.scss';
+
 .ResultImages {
     height: fit-content;
     // border: 1px solid #FFBF26;
     padding-inline: $paddingInline;
     columns: 3;
-    // column-gap: ;
-    // gap: 20px;
+    column-gap: $gap;
 
-    >img {
-        width: calc((100vw - 200px)/3);
+    .imageWrapper {
+        width: calc((100vw - ($paddingInline * 2) - ($gap * 2)) / 3);
+        margin-bottom: $gap;
         break-inside: avoid;
-        // margin: 2.5px;
+        position: relative;
+        overflow: hidden;
         transition: all 0.3s;
+
+        >img {
+            width: 100%;
+            transition: all 0.3s;
+        }
+
+        >.userDetails {
+            position: absolute;
+            // border: 1px solid red;
+            left: 0;
+            bottom: -50px;
+            padding-inline: 10px;
+            padding-bottom: 5px;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: all 0.3s;
+
+            .user {
+                display: flex;
+                align-items: center;
+
+                img {
+                    width: 40px;
+                    height: 40px;
+                    border-radius: 50%;
+                }
+
+                p {
+                    margin-left: 10px;
+                    text-align: center;
+                }
+            }
+
+            button {
+                cursor: pointer;
+                background: rgb(255, 255, 255);
+                border: none;
+                border-radius: 10px;
+                padding-block: 5px;
+                svg {
+                    width: 50px;
+                    fill: black;
+                }
+            }
+        }
+
         &:hover {
-            filter: brightness(50%);
+            >img {
+                filter: brightness(50%);
+            }
+            >.userDetails {
+                bottom: 0px;
+            }
         }
     }
 
-
-    // >.scrollLoader {
-    //     border: 1px solid red;
-    //     width: calc(100vw - 200px);
-    //     break-inside: avoid-column;
+    // img,
+    // .imageWrapper {
+        
     // }
+
+
+    // img {
+    //     z-index: 2;
+    //     // margin: 2.5px;
+    //     // &:hover {
+    //     //     filter: brightness(50%);
+    //     // }
+    // }
+
+    @media screen and (max-width: 900px) {
+        padding-inline: $paddingInlineRespinsive;
+        columns: 2;
+
+        // img,
+        .imageWrapper {
+            width: calc((100vw - ($paddingInlineRespinsive * 2) - ($gap)) / 2);
+        }
+    }
+
+    // @media screen and (max-width: 884px) {
+    // }
+
+    @media screen and (max-width: 500px) {
+        columns: 1;
+
+        .imageWrapper {
+            width: calc((100vw - ($paddingInlineRespinsive * 2)));
+        }
+    }
 }

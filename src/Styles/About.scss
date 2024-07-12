@@ -5,6 +5,11 @@
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
+
+    @media screen and (max-width: 900px) {
+        padding-inline: $paddingInlineRespinsive;
+    }
+
     >h1 {
         font-family: "Caveat", cursive;
         font-optical-sizing: auto;
@@ -15,13 +20,26 @@
             color: red;
         }
     }
-    b {
-        letter-spacing: 1px;
-    }
     li {
         list-style-position: inside;
+        margin-block: 10px;
+        &::marker {
+            color: red;
+        }
+        span {
+            font-weight: bold;
+            text-transform: uppercase;
+            font-weight: bold;
+            margin-right: 10px;
+        }
     }
-    >p {
-
+    h1 {
+        margin-bottom: 10px;
+    }
+    h2 {
+        margin-block: 15px;
+    }
+    h4 {
+        margin-top: 20px;
     }
 }

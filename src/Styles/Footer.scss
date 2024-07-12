@@ -1,4 +1,5 @@
 @import './Variables.scss';
+
 footer {
     // border: 1px solid red;
     padding-inline: $paddingInline;
@@ -15,11 +16,16 @@ footer {
     -ms-flex-pack: justify;
     justify-content: space-between;
 
+    @media screen and (max-width: 900px) {
+        padding-inline: $paddingInlineRespinsive;
+    }
+
     >h1 {
         font-family: "Caveat", cursive;
         font-optical-sizing: auto;
         font-style: normal;
         font-size: 3rem;
+
         span {
             color: red;
         }
@@ -67,10 +73,14 @@ footer {
             >a {
                 text-decoration: none;
                 // color: rgb(191, 244, 255);
-                color: rgb(255, 144, 119);
+                // color: rgb(255, 144, 119);
                 // color: #fff2aa;
                 // font-weight: bold;
                 letter-spacing: 1px;
+                background-image: linear-gradient(to right, #92fe9d 0%, #00c9ff 100%);
+                // background-image: linear-gradient(to top, #ff0844 0%, #ffb199 100%);
+                color: transparent;
+                background-clip: text;
             }
         }
 

@@ -12,14 +12,22 @@ header {
     position: relative;
     z-index: 5;
 
+    @media screen and (max-width: 900px) {
+        padding-inline: $paddingInlineRespinsive;
+    }
+
     >h1 {
         font-family: "Caveat", cursive;
         font-optical-sizing: auto;
         font-style: normal;
         font-size: 3rem;
+        // background-image: linear-gradient(to right, #92fe9d 0%, #00c9ff 100%);
+        // color: transparent;
+        // background-clip: text;
 
         span {
             color: red;
+            
         }
     }
 
@@ -86,10 +94,13 @@ header {
     >.menuBar {
         display: none;
         cursor: pointer;
+        position: relative;
         z-index: 5;
         svg {
             width: 40px;
             height: 40px;
+            position: relative;
+            z-index: 5;
     
             &:hover {
                 path {
@@ -105,26 +116,32 @@ header {
                 }
             }
         }
-    }
-    .circle {
-        display: none;
-        position: absolute;
-        top: -500px;
-        right: -500px;
-        width: 500px;
-        height: 500px;
-        border: none;
-        border-radius: 50%;
-        background: red;
-        z-index: 1;
-        transition: all 1s;
-    }
-    .view {
-        top: -200px;
-        right: -150px;
-        // transform: scale(3);
-        transition: all 0.2s;
-    }
+        >.circle {
+            // display: none;
+            position: absolute;
+            // top: -500px;
+            // right: -500px;
+            top: 40%;
+            left: 35%;
+            transform: translate(-35%, -40%);
+            width: 0;
+            height: 0;
+            border: none;
+            border-radius: 50%;
+            // border-bottom-left-radius: 50%;
+            background: red;
+            z-index: 1;
+            transition: all 0.5s;
+        }
+        .view {
+            // top: -200px;
+            // right: -150px;
+            width: 500px;
+            height: 500px;
+            // transform: scale(3);
+            transition: all 0.2s;
+        }
+    }    
 }
 
 @media screen and (max-width: 900px) {
@@ -149,13 +166,13 @@ header {
         // background: yellow;
         // border: 1px solid red;
         overflow: hidden;
-        transition: all 0.3s;
+        transition: all 0.2s;
         z-index: 5;
         >a {
             text-decoration: none;
             font-size: 1.05rem;
-            font-weight: 500;
-            color: rgb(255, 255, 255);
+            font-weight: bold;
+            color: rgb(255, 255, 255)
         }
     }
 }

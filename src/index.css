@@ -27,6 +27,6 @@ body::-webkit-scrollbar {
 .carousalWrapper {
   position: relative;
   height: 830px;
-  overflow-x: none;
+  overflow-x: hidden;
   /* border: 5px solid red; */
 }
