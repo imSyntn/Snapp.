@@ -5,6 +5,7 @@ import Footer from './Components/Footer'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import Home from './Components/Home'
 import Loader from './Components/Loader'
+import Share from './Components/Share'
 
 // const Home = lazy(()=> import('./Components/Home'))
 const Explore = lazy(() => import('./Components/Explore'))
@@ -33,6 +34,7 @@ function App() {
               <Route path='/explore' element={<Suspense fallback={<div className="Loader"><Loader /></div>}><Explore /></Suspense>} />
               <Route path='/about' element={<Suspense fallback={<div className="Loader"><Loader /></div>}><About /></Suspense>} />
               <Route path='/about' element={<Suspense fallback={<div className="Loader"><Loader /></div>}><About /></Suspense>} />
+              <Route path='/share/:id' element={<Suspense fallback={<div className="Loader"><Loader /></div>}><Share /></Suspense>} />
             </Routes>
             <Footer />
           </BrowserRouter>

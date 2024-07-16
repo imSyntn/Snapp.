@@ -22,6 +22,7 @@ export const useFetch = (prop: string) => {
                 setLoading(true)
                 const req = await fetch(prop);
                 const res = await req.json()
+                // if()
                 setData(res.results || res)
             } catch (error) {
                 setError(true)

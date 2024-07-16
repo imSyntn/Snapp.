@@ -1,0 +1,208 @@
+.userDetails-downloadLink {
+    // border: 1px solid red;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+
+    p,
+    h3 {
+        text-shadow: 0px 0px 10px rgb(0, 0, 0);
+        user-select: none;
+    }
+
+    >.userDetails {
+        display: flex;
+        align-items: center;
+
+        img {
+            border: none;
+            border-radius: 50%;
+            // object-fit: cover;
+            width: 50px;
+            margin-right: 20px;
+        }
+
+        .nameID {
+            p {
+                font-size: 1.2rem;
+            }
+
+            .id {
+                display: flex;
+
+                // justify-content: space-between;
+                a {
+                    color: white;
+                    font-size: 1.1rem;
+                    margin-right: 10px;
+                }
+            }
+        }
+    }
+
+    >.dropdown {
+        position: relative;
+
+        // bor
+        button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 120px;
+            height: 40px;
+            font-size: 1.05rem;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+
+            svg {
+                font-size: 20px;
+                margin-left: 5px;
+                height: 100%;
+                // transition: all 0.3s;
+                // border-left: 1px solid;
+            }
+        }
+
+        >.dropdownContentDiv {
+            position: absolute;
+            background: #00000047;
+            width: 100%;
+            right: 0;
+            padding-inline: 10px;
+            border: none;
+            border-radius: 5px;
+
+            >p {
+                // text-align: center;
+                font-size: 1.03rem;
+                display: flex;
+                justify-content: space-between;
+                margin-block: 15px;
+                cursor: pointer;
+                transition: opacity 0.1s;
+
+                &:hover {
+                    opacity: 0.5;
+
+                    svg {
+                        path {
+                            stroke-dasharray: 1000;
+                            stroke-dashoffset: 1000;
+                            animation: svgAnimation 5s forwards;
+                        }
+
+                        @keyframes svgAnimation {
+                            to {
+                                stroke-dashoffset: 0;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.ModalImage {
+    height: calc(100vh - 50px - 20px - 140px);
+}
+
+.imageDetails {
+    // border: 1px solid red;
+    width: 100%;
+
+    p,
+    h3 {
+        text-shadow: 0px 0px 10px rgb(0, 0, 0);
+        user-select: none;
+    }
+
+    >.description {
+        font-size: 1.3rem;
+        margin-bottom: 10px;
+    }
+
+    >.variableData {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 10px;
+
+        >.variableDataContent {
+            text-align: start;
+        }
+
+        button {
+            width: 100px;
+            height: 40px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+
+            svg {
+                margin-right: 5px;
+                font-size: 1rem;
+                cursor: pointer;
+            }
+        }
+    }
+
+    >.constantData {
+        >.details {
+            display: flex;
+            justify-content: space-between;
+
+            p {
+                display: flex;
+                align-items: center;
+                font-size: 1.05rem;
+
+                svg {
+                    font-size: 1.2rem;
+                    margin-right: 5px;
+                }
+
+                a {
+                    color: white;
+                    margin-left: 4px;
+                }
+            }
+
+            >.dropdown {
+                position: relative;
+
+                >p {
+                    cursor: pointer;
+
+                    svg {
+                        margin-left: 5px;
+                    }
+                }
+
+
+                >.dropdownContentDiv {
+                    position: absolute;
+                    background: #000000b7;
+                    width: 100%;
+                    right: 0;
+                    bottom: 25px;
+                    padding-inline: 10px;
+                    border: none;
+                    border-radius: 5px;
+
+                    >p {
+                        font-size: 1.03rem;
+                        display: flex;
+                        justify-content: space-between;
+                        margin-block: 5px;
+                    }
+                }
+            }
+        }
+    }
+}

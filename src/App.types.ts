@@ -35,8 +35,26 @@ export interface ResultProp {
     downloads: string,
     views: number,
     user: UserProp,
-    links: {download: string}
+    links: { download: string },
+    location: {
+        name: string | null,
+        city: string | null,
+        country: string | null
+    },
+    exif: {
+        aperture: string,
+        exposure_time: string,
+        focal_length: string,
+        iso: number,
+        make: string,
+        model: string,
+        name: string
+    }
 }
+
+
+
+
 export interface NameDescObj {
     name: string,
     desc: string,
