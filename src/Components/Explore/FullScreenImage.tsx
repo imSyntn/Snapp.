@@ -1,14 +1,10 @@
 import { useEffect, useState } from 'react'
-import '../Styles/Share.scss'
 import { useParams } from 'react-router-dom'
-import ModalShareTemplate from './ModalShareTemplate'
-import { useFetch } from '../Utils/useFetch'
-import { ResultProp } from '../App.types'
-import Loader from './Loader'
+import { ResultProp } from '../../App.types'
 
-const Share = () => {
+const FullScreenImage = () => {
 
-    const { id } = useParams<{id:string}>()
+    const { id } = useParams()
 
     const [data, setData] = useState<ResultProp | false>(false)
 
@@ -17,7 +13,7 @@ const Share = () => {
     // const { loading, data } = useFetch(fetchUrl)
 
     useEffect(() => {
-        const getData = async() => {
+        const getData = async () => {
             try {
                 const req = await fetch(fetchUrl)
                 const res = await req.json();
@@ -31,20 +27,15 @@ const Share = () => {
         getData()
     }, [])
 
-
     return (
-        <div className='Share' style={data ? {height: '100hv'} : {height: 'fit-content'}}>
+        <div className='FullScreenImage' data-lenis-prevent style={{height: '100vh', width: '100%',position:'fixed', zIndex: '100', top: '0', overflow: 'auto', backgroundColor: 'black', display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
             {
-                data ? (
-                    <ModalShareTemplate result={data} />
-                ) : (
-                    <div className="Loader" style={{height: `calc(100vh - 60.8px - 104.6px - 20px)`}}>
-                        <Loader />
-                    </div>
+                data && (
+                    <img src={data.urls.raw || data.urls.full || data.urls.regular} alt="requested fullscreen view of image" style={{width: `${data.width}`, height: `${data.height}`}}  />
                 )
             }
         </div>
     )
 }
 
-export default Share
+export default FullScreenImage

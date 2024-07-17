@@ -2,10 +2,12 @@ import { Suspense, lazy, useCallback, useContext, useEffect, useState } from 're
 import '../../Styles/Explore/ResultImages.scss'
 import '../../Styles/Loader.scss'
 import { useFetch } from '../../Utils/useFetch'
+import { useImageDownloader } from '../../Utils/useImageDownloader'
 import { searchContext } from '../Explore'
 import Loader from '../Loader'
 import { ResultProp } from '../../App.types'
 import { FaDownload } from "react-icons/fa6";
+import { AnimatePresence } from 'framer-motion'
 
 const Modal = lazy(() => import('./Modal'))
 
@@ -15,6 +17,8 @@ const ResultImages = () => {
   const [page, setPage] = useState<number>(1)
   const [count, setCount] = useState<number>(10)
   const [modalIndex, setModalIndex] = useState<number>(-1)
+
+  const getImageDownloader = useImageDownloader()
 
   const Context = useContext(searchContext)
 
@@ -44,22 +48,9 @@ const ResultImages = () => {
     };
   };
 
-  const handleImageDownload = async (imageUrl: string, fileName: string) => {
-    try {
-      const req = await fetch(imageUrl)
-      const res = await req.blob()
-      const url = URL.createObjectURL(res)
-      const link = document.createElement('a')
-      link.href = url,
-        link.download = fileName;
-      document.body.appendChild(link)
-      link.click()
-      document.body.removeChild(link)
-      URL.revokeObjectURL(url)
-    } catch (error) {
-      console.log(error)
-    }
-  }
+  // const handleImageDownload = (imageUrl: string, fileName: string) => {
+
+  // }
 
   useEffect(() => {
     console.log(page, count)
@@ -86,9 +77,11 @@ const ResultImages = () => {
 
   return (
     <>
-      {
-        (modalIndex !== -1) && <Suspense fallback={<Loader />}><Modal result={results[modalIndex]} setModalIndex={setModalIndex} /></Suspense>
-      }
+      <AnimatePresence>
+        {
+          (modalIndex !== -1) && <Suspense fallback={<Loader />}><Modal result={results[modalIndex]} setModalIndex={setModalIndex} /></Suspense>
+        }
+      </AnimatePresence>
 
       <div className='ResultImages'>
 
@@ -106,14 +99,17 @@ const ResultImages = () => {
             <>
               {
                 results.map((item, index) => (
-                  <div className="imageWrapper" key={item.urls.small} style={{ aspectRatio: item.width / item.height }} onClick={()=> setModalIndex(index)}>
+                  <div className="imageWrapper" key={item.urls.small} style={{ aspectRatio: item.width / item.height }} onClick={() => setModalIndex(index)}>
                     <img src={item.urls.small} style={{ aspectRatio: item.width / item.height }} alt={item.alt_description} />
                     <div className="userDetails">
                       <div className="user">
                         <img src={item.user.profile_image.medium} alt="" />
                         <p>{item.user.name}</p>
                       </div>
-                      <button className="downloadIcon" onClick={() => handleImageDownload(item.urls.raw || item.urls.full, `${item.alt_description}.jpg`)}>
+                      <button className="downloadIcon" onClick={(e) => {
+                        e.stopPropagation()
+                        getImageDownloader(item.urls.raw || item.urls.full || item.urls.regular, `${item.alt_description}.jpg`)
+                      }}>
                         <FaDownload />
                       </button>
                     </div>

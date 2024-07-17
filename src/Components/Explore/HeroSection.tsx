@@ -70,7 +70,7 @@ const HeroSection = () => {
                 <div className="topicsDiv" ref={topicsDivRef}>
                     {
                         !loading && data.map((item,index) => (
-                            <p key={item.id+index} onClick={() => setSearch({
+                            <p key={item.title+index} onClick={() => setSearch({
                                 topic: {
                                     id: item.id,
                                     title: item.title,

@@ -5,7 +5,7 @@ export const useFetch = (prop: string) => {
 
     const [loading, setLoading] = useState<boolean>(true)
     const [data, setData] = useState<ResultProp[]>([])
-    const [error, setError] = useState<boolean>(false)
+    const [error, setError] = useState<any>(false)
 
     useEffect(() => {
         const getData = async () => {

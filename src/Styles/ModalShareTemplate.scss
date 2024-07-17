@@ -1,3 +1,49 @@
+.attributionDiv {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    color: black;
+    padding: 20px;
+    display: flex;
+    border: none;
+    border-radius: 20px;
+
+    >svg {
+        cursor: pointer;
+        position: absolute;
+        top: 15px;
+        font-size: 25px;
+        right: 15px;
+    }
+
+    >img {
+        margin-right: 20px;
+        height: 64px;
+        width: 64px;
+    }
+
+    h3 {
+        em {
+            color: red;
+        }
+    }
+
+    p {
+
+        // font-size: 20px;
+        span {
+            color: red;
+            font-family: "Caveat", cursive;
+            font-optical-sizing: auto;
+            font-style: normal;
+            font-weight: 900;
+            font-size: 20px;
+        }
+    }
+}
+
 .userDetails-downloadLink {
     // border: 1px solid red;
     display: flex;
@@ -107,6 +153,7 @@
 
 .ModalImage {
     height: calc(100vh - 50px - 20px - 140px);
+    cursor: zoom-in;
 }
 
 .imageDetails {

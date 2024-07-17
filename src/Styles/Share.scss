@@ -1,3 +1,18 @@
+@import './Variables.scss';
 .Share {
-    
+    position: relative;
+    height: 100vh;
+    // border: 1px solid red;
+    padding-inline: $paddingInline;
+    width: 100%;
+    // background-color: #242424;
+    // z-index: 50;
+    background-color: #242424ce;
+    // backdrop-filter: blur(10px);
+    padding-block: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    overflow-y: auto;
 }

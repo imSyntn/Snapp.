@@ -1,13 +1,11 @@
-import { memo, useState } from 'react'
+import { memo, useState, useEffect } from 'react'
 import '../Styles/ModalShareTemplate.scss'
 import { ResultProp } from '../App.types'
 import { useAbcType } from '../Utils/useAbcType';
 import { useDateTime } from '../Utils/useDateTime';
-
+import { useImageDownloader } from '../Utils/useImageDownloader';
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 import { RxCross2 } from "react-icons/rx";
-import { AiOutlineFullscreen } from "react-icons/ai";
-import { AiOutlineFullscreenExit } from "react-icons/ai";
 import { FaShare, FaInstagram } from "react-icons/fa";
 import { MdOutlineDateRange } from "react-icons/md";
 import { FiCamera } from "react-icons/fi";
@@ -16,6 +14,9 @@ import { IoShieldCheckmarkOutline } from "react-icons/io5";
 import { FiDownload } from "react-icons/fi";
 import { FaCcPaypal, FaXTwitter } from "react-icons/fa6";
 import { TbWorldWww } from "react-icons/tb";
+import { SiTicktick } from "react-icons/si";
+import { motion, AnimatePresence } from 'framer-motion'
+
 
 interface dropdownType {
     button: boolean,
@@ -24,16 +25,66 @@ interface dropdownType {
 
 const ModalShareTemplate = ({ result }: { result: ResultProp }) => {
 
+    const getImageDownloader = useImageDownloader()
+
     const [showDropdown, setShowDropdown] = useState<dropdownType>({
         button: false,
         text: false
     })
+    const [copied, setCopied] = useState<boolean>(false)
+    const [downloadInitiated, setDownloadInitiated] = useState<boolean>(false)
 
     const AbcType = useAbcType(result.alt_description)
     const dateInReadableFormat = useDateTime(result.created_at)
 
+    const handleShareLink = () => {
+        const shareableUrl = `${window.location.origin}/share/${result.id}`
+        console.log(shareableUrl)
+        navigator.clipboard.writeText(shareableUrl)
+        setCopied(true)
+    }
+
+    useEffect(() => {
+        setCopied(false)
+        setDownloadInitiated(false)
+    }, [])
+
+    const dropdownVariants = {
+        hidden: { scale: 0 },
+        visible: {
+            scale: 1,
+            transition: {
+                staggerChildren: 0.1
+            }
+        }
+    };
+
+    const itemVariants = {
+        hidden: { opacity: 0 },
+        visible: { opacity: 1 }
+    };
+
+
     return (
         <>
+            <AnimatePresence>
+                {
+                    downloadInitiated && (
+                        <motion.div className="attributionDiv"
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            exit={{ opacity: 0 }}
+                            transition={{ duration: 0.3 }}>
+                            <RxCross2 onClick={() => setDownloadInitiated(false)} />
+                            <img src={result.user.profile_image.medium} alt="" />
+                            <div className="attribution">
+                                <h3>SayThanks<em>!</em></h3>
+                                <p>Give a shoutout to <span>{result.user.name}</span></p>
+                            </div>
+                        </motion.div>
+                    )
+                }
+            </AnimatePresence>
             <div className="userDetails-downloadLink">
                 <div className="userDetails">
                     <img src={result.user.profile_image.medium} alt="Profile Image" />
@@ -51,17 +102,24 @@ const ModalShareTemplate = ({ result }: { result: ResultProp }) => {
                     <button onClick={() => setShowDropdown(prev => ({ ...prev, button: !prev.button }))}>Download {showDropdown.button ? <IoIosArrowUp /> : <IoIosArrowDown />}</button>
                     {
                         showDropdown.button && (
-                            <div className='dropdownContentDiv'>
-                                {result.urls.raw && <p>Raw <FiDownload /></p>}
-                                {result.urls.full && <p>Full <FiDownload /></p>}
-                                {result.urls.regular && <p>Regular <FiDownload /></p>}
-                                {result.urls.small && <p>Small <FiDownload /></p>}
-                            </div>
+                            <motion.div className='dropdownContentDiv' variants={dropdownVariants} initial={'hidden'} animate={'visible'}>
+                                {
+                                    Object.entries(result.urls).map(([name, link]) => (
+                                        <motion.p key={name} variants={itemVariants} onClick={() => {
+                                            getImageDownloader(link, `${result.alt_description}.jpg`);
+                                            setDownloadInitiated(true)
+                                        }}>{name} <FiDownload /></motion.p>
+                                    ))
+                                }
+                            </motion.div>
                         )
                     }
                 </div>
             </div>
-            <img src={result.urls.regular} className='ModalImage' alt="Image" style={{ aspectRatio: `${result.width}/${result.height}` }} />
+            <motion.img onClick={()=> window.open(`${window.location.origin}/fullScreenImage/${result.id}`, '_blank')} src={result.urls.regular} className='ModalImage' alt="Image" style={{ aspectRatio: `${result.width}/${result.height}` }} 
+            initial={{ opacity: 0 }} animate={{ opacity: 1 }} 
+            transition={{ duration: 1.5 }}
+            />
             <div className="imageDetails">
                 <p className="description">{AbcType}</p>
                 <div className="variableData">
@@ -73,7 +131,7 @@ const ModalShareTemplate = ({ result }: { result: ResultProp }) => {
                         <h3>Downloads</h3>
                         <p>{result.downloads ?? 'Not available'}</p>
                     </div>
-                    <button><FaShare />Share</button>
+                    <button onClick={handleShareLink} style={copied ? { backgroundColor: '#80ff80' } : {}}>{copied ? <><SiTicktick />Copied</> : <><FaShare />Share</>}</button>
                 </div>
                 <div className="constantData">
                     <div className="details">
@@ -89,20 +147,16 @@ const ModalShareTemplate = ({ result }: { result: ResultProp }) => {
                             result.exif?.name && <div className='dropdown'>
                                 {
                                     showDropdown.text &&
-                                    <div className="dropdownContentDiv">
-                                        <h3>Camera</h3>
-                                        <p>{result.exif.make ?? ''}</p>
-                                        <h3>Model</h3>
-                                        <p>{result.exif.model ?? ''}</p>
-                                        <h3>ISO</h3>
-                                        <p>{result.exif.iso ?? ''}</p>
-                                        <h3>Focal Length</h3>
-                                        <p>{result.exif.focal_length ?? ''}</p>
-                                        <h3>Aperture</h3>
-                                        <p>{result.exif.aperture ?? ''}</p>
-                                        <h3>Exposure Time</h3>
-                                        <p>{result.exif.exposure_time ?? ''}</p>
-                                    </div>
+                                    <motion.div className="dropdownContentDiv" variants={dropdownVariants} initial={'hidden'} animate={'visible'}>
+                                        {
+                                            Object.entries(result.exif).map(([name, value]) => (
+                                                <>
+                                                    <motion.h3 variants={itemVariants}>{name}</motion.h3>
+                                                    <motion.p variants={itemVariants}>{value ?? ''}</motion.p>
+                                                </>
+                                            ))
+                                        }
+                                    </motion.div>
                                 }
                                 <p onClick={() => setShowDropdown(prev => ({ ...prev, text: !prev.text }))}>< FiCamera />{result.exif.name}{showDropdown.text ? <IoIosArrowDown /> : <IoIosArrowUp />}</p>
                             </div>

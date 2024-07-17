@@ -10,7 +10,8 @@ import Share from './Components/Share'
 // const Home = lazy(()=> import('./Components/Home'))
 const Explore = lazy(() => import('./Components/Explore'))
 const About = lazy(() => import('./Components/About'))
-
+const FullScreenImage = lazy(()=> import('./Components/Explore/FullScreenImage'))
+const NoRoutes = lazy(()=> import('./Components/NoRoutes'))
 
 function App() {
   const [isLoading, setIsLoading] = useState<boolean>(true)
@@ -35,6 +36,8 @@ function App() {
               <Route path='/about' element={<Suspense fallback={<div className="Loader"><Loader /></div>}><About /></Suspense>} />
               <Route path='/about' element={<Suspense fallback={<div className="Loader"><Loader /></div>}><About /></Suspense>} />
               <Route path='/share/:id' element={<Suspense fallback={<div className="Loader"><Loader /></div>}><Share /></Suspense>} />
+              <Route path='/fullScreenImage/:id' element={<Suspense fallback={<div className="Loader"><Loader /></div>}><FullScreenImage /></Suspense>} />
+              <Route path='*' element={<Suspense><NoRoutes /></Suspense>} />
             </Routes>
             <Footer />
           </BrowserRouter>
