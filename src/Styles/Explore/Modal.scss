@@ -19,6 +19,16 @@
     align-items: center;
     justify-content: space-between;
     overflow-y: auto;
+    // scroll-behavior: smooth;
+    &::-webkit-scrollbar {
+        display: none;
+    }
+
+
+    @media screen and (max-width: 1000px) {
+        padding-inline: $paddingInlineRespinsive;
+        padding-top: 34px;
+    }
 
     >.hideModal {
         position: absolute;
@@ -28,6 +38,10 @@
 
         svg {
             font-size: 30px;
+        }
+        @media screen and (max-width: 1000px) {
+            top: 5px;
+            right: $paddingInlineRespinsive;
         }
     }
 }

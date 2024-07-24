@@ -27,6 +27,7 @@ export interface ResultProp {
     slug: string,
     urls: ImageLinks,
     title: string,
+    color: string,
     description: string,
     width: number,
     height: number,

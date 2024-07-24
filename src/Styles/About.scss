@@ -20,17 +20,31 @@
             color: red;
         }
     }
-    li {
-        list-style-position: inside;
-        margin-block: 10px;
-        &::marker {
-            color: red;
-        }
-        span {
-            font-weight: bold;
-            text-transform: uppercase;
-            font-weight: bold;
-            margin-right: 10px;
+    ul {
+        // border: 1px solid red;
+        margin-top: 20px;
+        margin-bottom: 5px;
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+            width: 100%;
+        li {
+            list-style-position: inside;
+            margin: 10px;
+            width: 100%;
+            // display: block;
+            width: 360px;
+            // border: 1px solid yellow;
+            &::marker {
+                color: red;
+            }
+            span {
+                font-weight: bold;
+                text-transform: uppercase;
+                font-weight: bold;
+                margin-right: 10px;
+                text-decoration: underline;
+            }
         }
     }
     h1 {
@@ -39,7 +53,8 @@
     h2 {
         margin-block: 15px;
     }
-    h4 {
+    h3 {
         margin-top: 20px;
+        color: rgb(253, 211, 199)
     }
 }

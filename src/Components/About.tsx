@@ -18,7 +18,7 @@ const About = () => {
       <p>We believe in the power of visuals to inspire and connect people. Snapp is built with simplicity and user experience in mind, ensuring that you can effortlessly find and enjoy the images that speak to you. Our integration with Unsplash guarantees that you always have access to a rich library of top-quality photos.</p>
       <h2>Our Vision</h2>
       <p>At Snapp, our vision is to create a vibrant community where creativity and inspiration flourish. We aim to make it easier for you to discover new perspectives, share your visual passions, and keep your favorite images organized in one place.</p>
-      <h4>Explore the beauty of the world through the lens of talented photographers and make every snapp count!</h4>
+      <h3><em>Explore the beauty of the world through the lens of talented photographers and make every snapp count!</em></h3>
     </div>
   )
 }

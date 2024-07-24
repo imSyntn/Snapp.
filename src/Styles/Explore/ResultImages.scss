@@ -14,7 +14,7 @@
         position: relative;
         overflow: hidden;
         transition: all 0.3s;
-        cursor: zoom-in;
+        cursor: url('../../assets/zoom-in.png'), zoom-in;
 
         >img {
             width: 100%;

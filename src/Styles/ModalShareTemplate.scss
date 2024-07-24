@@ -1,7 +1,10 @@
+@import './Variables.scss';
+
 .attributionDiv {
     position: absolute;
     top: 50%;
     left: 50%;
+    width: 350px;
     transform: translate(-50%, -50%);
     background-color: #fff;
     color: black;
@@ -149,11 +152,15 @@
             }
         }
     }
+    @media screen and (max-width: 1000px) {
+        margin-bottom: 10px;
+    }
 }
 
 .ModalImage {
-    height: calc(100vh - 50px - 20px - 140px);
-    cursor: zoom-in;
+    // height: calc(100vh - 50px - 20px - 140px);
+    cursor: url('../assets/zoom-in.png'), zoom-in;
+    margin-block: 10px;
 }
 
 .imageDetails {
@@ -174,6 +181,7 @@
     >.variableData {
         display: flex;
         justify-content: space-between;
+        flex-wrap: wrap;
         margin-bottom: 10px;
 
         >.variableDataContent {
@@ -200,14 +208,16 @@
     }
 
     >.constantData {
-        >.details {
+        // >.details {
             display: flex;
+            flex-wrap: wrap;
             justify-content: space-between;
 
             p {
                 display: flex;
                 align-items: center;
                 font-size: 1.05rem;
+                margin-block: 10px;
 
                 svg {
                     font-size: 1.2rem;
@@ -238,7 +248,7 @@
                     width: 100%;
                     right: 0;
                     bottom: 25px;
-                    padding-inline: 10px;
+                    padding: 10px;
                     border: none;
                     border-radius: 5px;
 
@@ -249,6 +259,12 @@
                         margin-block: 5px;
                     }
                 }
+            }
+        // }
+        @media screen and (max-width: 1000px) {
+            margin-top: 15px;
+            >p {
+                margin-block: 5px;
             }
         }
     }

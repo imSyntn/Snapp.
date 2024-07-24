@@ -66,30 +66,10 @@ const Header = () => {
     <>
       <header>
         <h1>Snapp<span>!</span></h1>
-        <ul
-        // onMouseMove={ulHover}
-        //  ref={ulRef}
-        >
-          {/* <div ref={activeTabRef} className="activeTab"></div>
-        <Link 
-        // onMouseEnter={navHover}
-         to={'/'}><li>Home</li></Link>
-        <Link 
-        // onMouseEnter={navHover}
-         to={'/explore'}><li>Explore</li></Link>
-        <Link 
-        // onMouseEnter={navHover}
-         to={'/about'}><li>About</li></Link>
-        <Link 
-        // onMouseEnter={navHover}
-         to={'/signup'}><li>SignUp</li></Link>
-        <Link 
-        // onMouseEnter={navHover}
-         to={'/login'}><li>Login</li></Link>
-          */}
+        <ul>
           {
             navArray.map((item) => (
-              <Link to={item.pathName} key={item.name}><li style={(item.pathName === location) ? { color: 'gray' } : {}}>{item.name}</li></Link>
+              <Link to={item.pathName} key={item.name} className={(item.pathName === location) ? 'selectedRoute' : ''} >{item.name}</Link>
             ))
           }
         </ul>
@@ -113,13 +93,13 @@ const Header = () => {
           }
         </div>
       </header>
-      <div className="responsiveMenu" style={showMenu ? { height: '200px' } : { height: "0px" }}>
+      <ul className="responsiveMenu" style={showMenu ? { height: '200px' } : { height: "0px" }}>
         {
           navArray.map((item) => (
-            <Link to={item.pathName} key={item.name} style={(item.pathName === location) ? { color: 'black' } : {}}>{item.name}</Link>
+            <Link to={item.pathName} key={item.name} className={(item.pathName === location) ? 'selectedRoute' : ''} >{item.name}</Link>
           ))
         }
-      </div>
+      </ul>
     </>
   )
 }

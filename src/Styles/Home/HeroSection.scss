@@ -31,6 +31,25 @@
         font-size: 1.3rem;
         font-weight: 400;
         text-align: center;
+        // position: relative;
+        // &::before {
+        //     content: '';
+        //     // border: 1px solid red;
+        //     position: absolute;
+        //     top: 0;
+        //     right: 0;
+        //     width: 100%;
+        //     height: 100%;
+        //     background-image: linear-gradient(to right, #434343 -90%, black 100%);
+        //     // background-blend-mode:color;
+        //     // background-clip: content-box;
+        //     animation: textAnimation 10s alternate-reverse linear infinite;
+        // }
+        // @keyframes textAnimation {
+        //     to {
+        //         width: 0;
+        //     }
+        // }
     }
 
     

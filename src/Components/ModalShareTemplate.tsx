@@ -4,6 +4,8 @@ import { ResultProp } from '../App.types'
 import { useAbcType } from '../Utils/useAbcType';
 import { useDateTime } from '../Utils/useDateTime';
 import { useImageDownloader } from '../Utils/useImageDownloader';
+// import { useWindowResize } from '../Utils/useWindowResize';
+
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 import { RxCross2 } from "react-icons/rx";
 import { FaShare, FaInstagram } from "react-icons/fa";
@@ -16,6 +18,7 @@ import { FaCcPaypal, FaXTwitter } from "react-icons/fa6";
 import { TbWorldWww } from "react-icons/tb";
 import { SiTicktick } from "react-icons/si";
 import { motion, AnimatePresence } from 'framer-motion'
+import ImageComponent from './Explore/ImageComponent';
 
 
 interface dropdownType {
@@ -26,6 +29,7 @@ interface dropdownType {
 const ModalShareTemplate = ({ result }: { result: ResultProp }) => {
 
     const getImageDownloader = useImageDownloader()
+    // const { size: { windowWidth } } = useWindowResize()
 
     const [showDropdown, setShowDropdown] = useState<dropdownType>({
         button: false,
@@ -50,9 +54,9 @@ const ModalShareTemplate = ({ result }: { result: ResultProp }) => {
     }, [])
 
     const dropdownVariants = {
-        hidden: { scale: 0 },
+        hidden: { scaleY: 0 },
         visible: {
-            scale: 1,
+            scaleY: 1,
             transition: {
                 staggerChildren: 0.1
             }
@@ -116,10 +120,17 @@ const ModalShareTemplate = ({ result }: { result: ResultProp }) => {
                     }
                 </div>
             </div>
-            <motion.img onClick={()=> window.open(`${window.location.origin}/fullScreenImage/${result.id}`, '_blank')} src={result.urls.regular} className='ModalImage' alt="Image" style={{ aspectRatio: `${result.width}/${result.height}` }} 
-            initial={{ opacity: 0 }} animate={{ opacity: 1 }} 
-            transition={{ duration: 1.5 }}
+
+            {/* <ImageComponent item={result} clickEvent={()=> {}} showUserDetails={false} /> */}
+
+            <img onClick={() => window.open(`${window.location.origin}/fullScreenImage/${result.id}`, '_blank')} src={result.urls.regular} className='ModalImage' alt={result.alt_description}
+                style={
+                    // (result.height > result.width) ? 
+                    { height: `calc(100vh - 50px - 20px - 140px)`, aspectRatio: `${result.width}/${result.height}` }
+                    // : (windowWidth>900)? { width: 'calc(100vw - 220px)',aspectRatio: `${result.width}/${result.height}`} : { width: 'calc(100vw - 10vw - 20px)',aspectRatio: `${result.width}/${result.height}`}
+                }
             />
+
             <div className="imageDetails">
                 <p className="description">{AbcType}</p>
                 <div className="variableData">
@@ -134,35 +145,41 @@ const ModalShareTemplate = ({ result }: { result: ResultProp }) => {
                     <button onClick={handleShareLink} style={copied ? { backgroundColor: '#80ff80' } : {}}>{copied ? <><SiTicktick />Copied</> : <><FaShare />Share</>}</button>
                 </div>
                 <div className="constantData">
-                    <div className="details">
-                        <p><MdOutlineDateRange />Published at {dateInReadableFormat}</p>
-                        {
-                            result.location?.name &&
-                            <p>< CiLocationOn />{result.location.name ?? ''}</p>
-                        }
-                        {
-                            (typeof result.location === 'string') && <p>< CiLocationOn />{result.location}</p>
-                        }
-                        {
-                            result.exif?.name && <div className='dropdown'>
-                                {
-                                    showDropdown.text &&
-                                    <motion.div className="dropdownContentDiv" variants={dropdownVariants} initial={'hidden'} animate={'visible'}>
-                                        {
-                                            Object.entries(result.exif).map(([name, value]) => (
-                                                <>
-                                                    <motion.h3 variants={itemVariants}>{name}</motion.h3>
-                                                    <motion.p variants={itemVariants}>{value ?? ''}</motion.p>
-                                                </>
-                                            ))
-                                        }
-                                    </motion.div>
-                                }
-                                <p onClick={() => setShowDropdown(prev => ({ ...prev, text: !prev.text }))}>< FiCamera />{result.exif.name}{showDropdown.text ? <IoIosArrowDown /> : <IoIosArrowUp />}</p>
-                            </div>
-                        }
-                        <p><IoShieldCheckmarkOutline />Free to use under<a target='_blank' href="https://unsplash.com/license">Unsplash Lisence</a></p>
-                    </div>
+                    {/* <div className="details"> */}
+                    <p><MdOutlineDateRange />Published at {dateInReadableFormat}</p>
+                    {
+                        result.location?.name &&
+                        <p>< CiLocationOn />{result.location.name ?? ''}</p>
+                    }
+                    {
+                        (typeof result.location === 'string') && <p>< CiLocationOn />{result.location}</p>
+                    }
+                    {
+                        result.exif?.name && <div className='dropdown'>
+                            {
+                                showDropdown.text &&
+                                <motion.div className="dropdownContentDiv" variants={dropdownVariants} initial={'hidden'} animate={'visible'}>
+                                    {
+                                        Object.entries(result.exif).map(([name, value]) => (
+                                            <>
+                                                {
+                                                    value && (
+                                                        <>
+                                                            <motion.h3 variants={itemVariants}>{name}</motion.h3>
+                                                            <motion.p variants={itemVariants}>{value ?? ''}</motion.p>
+                                                        </>
+                                                    )
+                                                }
+                                            </>
+                                        ))
+                                    }
+                                </motion.div>
+                            }
+                            <p onClick={() => setShowDropdown(prev => ({ ...prev, text: !prev.text }))}>< FiCamera />{result.exif.name}{showDropdown.text ? <IoIosArrowDown /> : <IoIosArrowUp />}</p>
+                        </div>
+                    }
+                    <p><IoShieldCheckmarkOutline />Free to use under<a target='_blank' href="https://unsplash.com/license">Unsplash Lisence</a></p>
+                    {/* </div> */}
                 </div>
             </div>
         </>

@@ -18,7 +18,7 @@ const HeroSection = () => {
     const context = useContext(searchContext)
 
     if (!context) {
-        throw new Error('HeroSection must be used within a SearchProvider');
+        return null;
     }
 
     const { search, setSearch } = context;
@@ -99,7 +99,10 @@ const HeroSection = () => {
                 </div>
                 <div className="searchDiv">
                     <input type="text" name="" id="" placeholder='Search here...' onChange={(e) => setSearchText(e.target.value)} onKeyDown={(e)=> {
-                        if(e.key == 'Enter') searchImageFunction()
+                        if(e.key == 'Enter'){
+                            searchImageFunction()
+                            setSearchText('')
+                        }
                     }} value={searchText}
                     />
                     <div className="svgWrapper" onClick={searchImageFunction}>

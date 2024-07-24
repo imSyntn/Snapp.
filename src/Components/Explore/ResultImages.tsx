@@ -2,12 +2,10 @@ import { Suspense, lazy, useCallback, useContext, useEffect, useState } from 're
 import '../../Styles/Explore/ResultImages.scss'
 import '../../Styles/Loader.scss'
 import { useFetch } from '../../Utils/useFetch'
-import { useImageDownloader } from '../../Utils/useImageDownloader'
 import { searchContext } from '../Explore'
 import Loader from '../Loader'
 import { ResultProp } from '../../App.types'
-import { FaDownload } from "react-icons/fa6";
-import { AnimatePresence } from 'framer-motion'
+import ImageComponent from './ImageComponent'
 
 const Modal = lazy(() => import('./Modal'))
 
@@ -18,12 +16,10 @@ const ResultImages = () => {
   const [count, setCount] = useState<number>(10)
   const [modalIndex, setModalIndex] = useState<number>(-1)
 
-  const getImageDownloader = useImageDownloader()
-
   const Context = useContext(searchContext)
 
   if (!Context) {
-    throw new Error("Context Does not exist!")
+    return null;
   }
 
   const { search: { topic: { id }, searchVal } } = Context;
@@ -77,11 +73,9 @@ const ResultImages = () => {
 
   return (
     <>
-      <AnimatePresence>
-        {
-          (modalIndex !== -1) && <Suspense fallback={<Loader />}><Modal result={results[modalIndex]} setModalIndex={setModalIndex} /></Suspense>
-        }
-      </AnimatePresence>
+      {
+        (modalIndex !== -1) && <Suspense fallback={<Loader />}><Modal result={results[modalIndex]} setModalIndex={setModalIndex} /></Suspense>
+      }
 
       <div className='ResultImages'>
 
@@ -99,21 +93,7 @@ const ResultImages = () => {
             <>
               {
                 results.map((item, index) => (
-                  <div className="imageWrapper" key={item.urls.small} style={{ aspectRatio: item.width / item.height }} onClick={() => setModalIndex(index)}>
-                    <img src={item.urls.small} style={{ aspectRatio: item.width / item.height }} alt={item.alt_description} />
-                    <div className="userDetails">
-                      <div className="user">
-                        <img src={item.user.profile_image.medium} alt="" />
-                        <p>{item.user.name}</p>
-                      </div>
-                      <button className="downloadIcon" onClick={(e) => {
-                        e.stopPropagation()
-                        getImageDownloader(item.urls.raw || item.urls.full || item.urls.regular, `${item.alt_description}.jpg`)
-                      }}>
-                        <FaDownload />
-                      </button>
-                    </div>
-                  </div>
+                  <ImageComponent key={item.urls.small} item={item} index={index} clickEvent={setModalIndex} showUserDetails={true} />
                 ))
               }
               {
