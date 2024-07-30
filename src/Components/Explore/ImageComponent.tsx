@@ -10,7 +10,7 @@ const ImageComponent = ({ item, index, clickEvent, showUserDetails }: { item: Re
 
     return (
         <div className="imageWrapper" style={!imageLoaded ? { backgroundColor: item.color, aspectRatio: item.width / item.height } : { aspectRatio: item.width / item.height }} onClick={() => clickEvent(index)}>
-            <img src={item.urls.small} style={{ aspectRatio: item.width / item.height }} alt={item.alt_description} onLoad={() => setImageLoaded(true)} className={showUserDetails ? '' : 'ModalImage'} />
+            <img src={item.urls.small} loading='lazy' style={{ aspectRatio: item.width / item.height }} alt={item.alt_description} onLoad={() => setImageLoaded(true)} className={showUserDetails ? '' : 'ModalImage'} />
             {
                 showUserDetails && (
                     <div className="userDetails">
