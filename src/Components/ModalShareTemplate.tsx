@@ -110,7 +110,7 @@ const ModalShareTemplate = ({ result }: { result: ResultProp }) => {
                                 {
                                     Object.entries(result.urls).map(([name, link]) => (
                                         <motion.p key={name} variants={itemVariants} onClick={() => {
-                                            getImageDownloader(link, `${result.alt_description}.jpg`);
+                                            // getImageDownloader(link, `${result.alt_description}.jpg`);
                                             setDownloadInitiated(true)
                                         }}>{name} <FiDownload /></motion.p>
                                     ))
