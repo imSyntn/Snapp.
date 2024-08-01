@@ -77,3 +77,7 @@ export interface SearchType {
     topic: TopicType,
     searchVal: string
 }
+
+export interface UserLoginProp {
+    userName: string
+}

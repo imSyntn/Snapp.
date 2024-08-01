@@ -1,7 +1,8 @@
 .ImageCarousel {
-    height: 410px;
+    height: 400px;
     width: 100vw;
     // overflow: hidden;
+    // border: 1px solid red;
     position: relative;
     transition: all 0.3s;
 
@@ -37,7 +38,7 @@
         margin-bottom: 5px;
         >.wrapper {
             left: 0;
-            animation: carousalAnimation1 150s linear infinite;
+            animation: carousalAnimation1 200s linear infinite;
         }
     }
 
@@ -49,8 +50,25 @@
             position: absolute;
             right: 0;
             // bottom: 0;
-            animation: carousalAnimation2 150s linear infinite;
+            animation: carousalAnimation2 200s linear infinite;
         }
+    }
+
+    &::before, &::after {
+        content: "";
+        height: 100%;
+        width: 150px;
+        position: absolute;
+        top: 0px;
+        z-index: 2;
+    }
+    &::before{
+        left: 0px;
+        background: linear-gradient(to right, black 0%, rgba(0, 0, 0, 0) 100%);
+    }
+    &::after{
+        right: 0;
+        background: linear-gradient(to left, black 0%, rgba(0, 0, 0, 0) 100%);
     }
 
     >.wrapper {

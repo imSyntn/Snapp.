@@ -1,16 +1,34 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useImageDownloader } from '../../Utils/useImageDownloader'
+// import { useWindowResize } from '../../Utils/useWindowResize';
 import { FaDownload } from "react-icons/fa6";
 import { ResultProp } from '../../App.types';
 
 const ImageComponent = ({ item, index, clickEvent, showUserDetails }: { item: ResultProp, index?: number, clickEvent: Function, showUserDetails: boolean }) => {
 
     const getImageDownloader = useImageDownloader()
+
+
     const [imageLoaded, setImageLoaded] = useState<boolean>(false)
 
+    // useEffect(()=> {
+        
+    // },[])
+
+    // const getSize = () => {
+    //     if (item.width > item.height) {
+
+    //         // return { aspectRatio: item.height / item.width }
+    //     } else if (item.height> item.width) {
+    //         return { aspectRatio: item.width / item.height }
+    //     }
+    // }
+
     return (
-        <div className="imageWrapper" style={!imageLoaded ? { backgroundColor: item.color, aspectRatio: item.width / item.height } : { aspectRatio: item.width / item.height }} onClick={() => clickEvent(index)}>
-            <img src={item.urls.small} loading='lazy' style={{ aspectRatio: item.width / item.height }} alt={item.alt_description} onLoad={() => setImageLoaded(true)} className={showUserDetails ? '' : 'ModalImage'} />
+        <div className="imageWrapper" style={!imageLoaded ? { backgroundColor: item.color} : {}} onClick={() => clickEvent(index)}>
+            <img src={item.urls.small} loading='lazy' 
+            style={{ aspectRatio: item.width / item.height }} 
+            alt={item.alt_description} onLoad={() => setImageLoaded(true)} />
             {
                 showUserDetails && (
                     <div className="userDetails">

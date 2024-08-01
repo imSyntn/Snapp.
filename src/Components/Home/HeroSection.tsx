@@ -5,7 +5,7 @@ import '../../Styles/Home/HeroSection.scss'
 const HeroSection = () => {
   return (
     <section className='heroSection'>
-        <h1>Discover Stunning Images</h1>
+        <h1>Discover Stunning Images.</h1>
         <p>Explore a vast collection of high-quality images from around the world. Find the perfect visuals for your projects.</p>
         <nav>
             <Link to={'/explore'}><button>Get Started</button></Link>

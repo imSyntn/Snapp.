@@ -1,0 +1,44 @@
+@import '../Variables.scss';
+
+.FeatureImgText {
+    display: flex;
+    padding-inline: $paddingInline;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    width: 100%;
+
+    // border: 1px solid green;
+    img {
+        width: 500px;
+    }
+
+    .text {
+        margin-top: 20px;
+        width: 350px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        // border: 1px solid yellow;
+    }
+
+    &:nth-child(even) {
+        flex-direction: row-reverse;
+        margin-block: 30px;
+
+        @media screen and (max-width: 1050px) {
+            .text {
+                align-items: end;
+            }
+        }
+    }
+
+    @media screen and (max-width: 900px) {
+        padding-inline: $paddingInlineRespinsive;
+    }
+
+    @media screen and (max-width: 560px) {
+        img {
+            width: calc(100vw - ($paddingInlineRespinsive * 2));
+        }
+    }
+}

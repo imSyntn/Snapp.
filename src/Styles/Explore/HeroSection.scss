@@ -106,26 +106,40 @@
             align-items: center;
             // border: 1px solid rgb(217, 255, 0);
             border-radius: 25px;
-            background: white;
+            background: #2f3640;
             overflow: hidden;
+            // outline: 2px solid #FEBF00;
+            // outline-offset: 3px;
 
             >input {
                 height: 100%;
-                width: calc(100% - 50px);
+                width: calc(100% - 49px);
                 border: none;
                 outline: none;
                 font-size: 27px;
                 padding-left: 20px;
+                color: gray;
+                background: #2f3640;
+                &::placeholder {
+                    color: gray;
+                }
             }
 
             >.svgWrapper {
-                width: 50px;
-                background: #dedede;
+                width: 45px;
+                height: 45px;
+                border-radius: 50%;
+                background: #f47474;
+                background: linear-gradient(90deg, #2AF598 0%, #009EFD 100%);
+                display: flex;
+                align-items: center;
+                justify-content: center;
 
                 svg {
                     width: 30px;
+                    height: 30px;
                     // font-size: 30px;
-                    margin-left: 8px;
+                    margin-left: 3px;
                     // margin-right: 5px;
                     // fill: gray;
                     cursor: pointer;

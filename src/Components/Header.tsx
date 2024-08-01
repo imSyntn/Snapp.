@@ -1,8 +1,9 @@
 import { useState } from 'react'
 import '../Styles/Header.scss'
 import { Link, useLocation } from 'react-router-dom'
+import { UserLoginProp } from '../App.types'
 
-const Header = () => {
+const Header = ({userDetails} : {userDetails: UserLoginProp}) => {
 
   // const activeTabRef = useRef<HTMLDivElement>(null)
   // const ulRef = useRef<HTMLDivElement>(null)
@@ -18,49 +19,14 @@ const Header = () => {
   }, {
     pathName: '/about',
     name: 'About'
-  }, {
-    pathName: '/signup',
-    name: 'SignUp'
-  }, {
+  }]
+
+  const userNav = {
     pathName: '/login',
     name: 'Login'
-  },]
+  }
 
   const location = useLocation().pathname
-
-  // const ulHover = (e:any) => {
-  //   // console.log(e.clientX)
-  //   if(activeTabRef.current) {
-  //     // console.log(ulTagRef.current.clientX)
-  //     // activeTabRef.current.style.background = 'red'
-  //     // activeTabRef.current.style.left = `50px`
-  //     // console.log('aaasasa', ulRef.current.getBoundingClientRect())
-  //     const bgBox = activeTabRef.current
-  //     const mousePos = e.clientX
-
-
-
-  //     const ulWidth = ulRef.current.getBoundingClientRect().width;
-  //     const ulLeftPos = ulRef.current.getBoundingClientRect().left 
-  //     console.log(ulLeftPos)
-
-  //     if(mousePos > ulLeftPos+12.5) {
-  //       bgBox.style.left = `${mousePos - ulRef.current.getBoundingClientRect().left}px`
-  //     }
-
-
-
-  //     // const ppp = 
-  //     console.log(ulWidth, e.clientX - ulRef.current.getBoundingClientRect().left )
-
-
-  //     // activeTabRef.current.style.left = `tranalsteX(${372 - e.clientX}%)`
-  //   }
-
-  // const navHover = (e:any) => {
-  //   console.log(e.clientX)
-  //   // console.log(e.getBoundingClientRect())
-  // }
 
   return (
     <>
@@ -71,6 +37,13 @@ const Header = () => {
             navArray.map((item) => (
               <Link to={item.pathName} key={item.name} className={(item.pathName === location) ? 'selectedRoute' : ''} >{item.name}</Link>
             ))
+          }
+          {
+            (userDetails.userName == '') ? (
+              <Link to={userNav.pathName} className={(userNav.pathName === location) ? 'selectedRoute' : ''} >{userNav.name}</Link>
+            ) : (
+              <Link to={`user/${userDetails.userName}`} className='userName'>{userDetails.userName}</Link>
+            )
           }
         </ul>
         <div className="menuBar">

@@ -1,4 +1,4 @@
-import { Suspense, lazy, useCallback, useContext, useEffect, useState } from 'react'
+import React, { Suspense, lazy, useCallback, useContext, useEffect, useState } from 'react'
 import '../../Styles/Explore/ResultImages.scss'
 import '../../Styles/Loader.scss'
 import { useFetch } from '../../Utils/useFetch'
@@ -6,6 +6,7 @@ import { searchContext } from '../Explore'
 import Loader from '../Loader'
 import { ResultProp } from '../../App.types'
 import ImageComponent from './ImageComponent'
+import Masonry from 'react-layout-masonry';
 
 const Modal = lazy(() => import('./Modal'))
 
@@ -44,10 +45,6 @@ const ResultImages = () => {
     };
   };
 
-  // const handleImageDownload = (imageUrl: string, fileName: string) => {
-
-  // }
-
   useEffect(() => {
     console.log(page, count)
   }, [page, count])
@@ -80,32 +77,31 @@ const ResultImages = () => {
       <div className='ResultImages'>
 
         {
-
-          // new Array(20).fill(1).map((item, index) => (
-          //   <img src="https://images.unsplash.com/photo-1719150016704-270c5a0deee4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w2MzAzNTF8MHwxfHJhbmRvbXx8fHx8fHx8fDE3MjA2Nzc3NTh8&ixlib=rb-4.0.3&q=80&w=400" key={index} alt="" />
-          // ))
-
           (results.length == 0) ? (
             <div className="Loader">
               <Loader />
             </div>
           ) : (
-            <>
+            <Masonry columns={{ 300: 1, 500: 2, 900: 3 }} gap={20} columnProps={{
+              style: { flex: '0' },
+            }}>
               {
                 results.map((item, index) => (
-                  <ImageComponent key={item.urls.small} item={item} index={index} clickEvent={setModalIndex} showUserDetails={true} />
+                  <React.Fragment key={item.urls.small}>
+                    <ImageComponent item={item} index={index} clickEvent={setModalIndex} showUserDetails={true} />
+                  </React.Fragment>
                 ))
               }
               {
-                // <div className="Loader">
-                loading && <Loader />
-                // </div> 
-
+                (results.length != 0) && (
+                  new Array(5).fill(1).map((item, index) => (
+                    <Loader key={index} />
+                  ))
+                )
               }
-            </>
+            </Masonry>
           )
         }
-
       </div>
     </>
   )

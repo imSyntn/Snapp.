@@ -126,7 +126,7 @@
 
         >.dropdownContentDiv {
             position: absolute;
-            background: #00000047;
+            background: #000000b7;
             width: 100%;
             right: 0;
             padding-inline: 10px;
@@ -140,10 +140,10 @@
                 justify-content: space-between;
                 margin-block: 15px;
                 cursor: pointer;
-                transition: opacity 0.1s;
+                transition: all 0.1s;
 
                 &:hover {
-                    opacity: 0.5;
+                    opacity: 0.5 !important;
 
                     svg {
                         path {
@@ -170,8 +170,12 @@
 
 .ModalImage {
     // height: calc(100vh - 50px - 20px - 140px);
-    cursor: url('../assets/zoom-in.png'), zoom-in;
+    cursor: url('../assets/zoom-in.png') 12 12, zoom-in;
     margin-block: 10px;
+    @media screen and (max-width: 900px) {
+        width: calc(90vw);
+        height: auto !important;
+    }
 }
 
 .imageDetails {

@@ -1,17 +1,17 @@
-import {useEffect, useState} from 'react'
+import { useEffect, useState } from 'react'
 
 interface sizeType {
     windowWidth: number,
     windowHeight: number
 }
 
-export const useWindowResize = () => {
+export const useWindowResize = (): sizeType => {
     const [size, setSize] = useState<sizeType>({
         windowWidth: 0,
         windowHeight: 0
     })
 
-    useEffect(()=> {
+    useEffect(() => {
         const resizeFunction = () => {
             setSize({
                 windowWidth: window.innerWidth,
@@ -20,10 +20,13 @@ export const useWindowResize = () => {
         }
         window.addEventListener('resize', resizeFunction)
 
-        return ()=> {
-            window.removeEventListener( 'resize', resizeFunction)
+        return () => {
+            window.removeEventListener('resize', resizeFunction)
         }
-    },[])
+    }, [])
 
-  return {size}
+    return {
+        windowWidth: size.windowWidth,
+        windowHeight:  size.windowHeight
+    }
 }

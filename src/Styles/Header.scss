@@ -91,8 +91,9 @@ header {
 ul {
     list-style: none;
     display: flex;
-    width: 550px;
+    // width: 550px;
     justify-content: space-between;
+    align-items: center;
     position: relative;
     // overflow: hidden;
     // border: 1px solid rgb(255, 255, 255);
@@ -106,6 +107,14 @@ ul {
         padding-block: 5px;
         padding-inline: 10px;
         cursor: pointer;
+        margin-inline: 30px;
+
+        &:nth-child(1) {
+            margin-left: 0px;
+        }
+        &:nth-last-child(1) {
+            margin-right: 0px;
+        }
 
         &::before {
             content: '';
@@ -116,7 +125,7 @@ ul {
             width: 2px;
             background-color: rgb(255, 255, 255);
             transition: all 0.3s;
-            opacity: 0.2;
+            opacity: 0;
         }
 
         &::after {
@@ -128,7 +137,7 @@ ul {
             width: 2px;
             background-color: rgb(255, 255, 255);
             transition: all 0.3s;
-            opacity: 0.2;
+            opacity: 0;
         }
 
 
@@ -148,6 +157,11 @@ ul {
                 opacity: 1;
             }
         }
+    }
+    .userName {
+        background-image: linear-gradient(to top, #b3ffab 0%, #12fff7 100%);
+        background-clip: text;
+        color: transparent;
     }
 }
 .selectedRoute {

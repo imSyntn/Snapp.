@@ -1,10 +1,10 @@
-import { memo, useState, useEffect } from 'react'
+import { memo, useState, useEffect, useRef, useLayoutEffect } from 'react'
 import '../Styles/ModalShareTemplate.scss'
 import { ResultProp } from '../App.types'
 import { useAbcType } from '../Utils/useAbcType';
 import { useDateTime } from '../Utils/useDateTime';
 import { useImageDownloader } from '../Utils/useImageDownloader';
-// import { useWindowResize } from '../Utils/useWindowResize';
+import { useWindowResize } from '../Utils/useWindowResize';
 
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 import { RxCross2 } from "react-icons/rx";
@@ -18,7 +18,7 @@ import { FaCcPaypal, FaXTwitter } from "react-icons/fa6";
 import { TbWorldWww } from "react-icons/tb";
 import { SiTicktick } from "react-icons/si";
 import { motion, AnimatePresence } from 'framer-motion'
-import ImageComponent from './Explore/ImageComponent';
+// import ImageComponent from './Explore/ImageComponent';
 
 
 interface dropdownType {
@@ -29,7 +29,8 @@ interface dropdownType {
 const ModalShareTemplate = ({ result }: { result: ResultProp }) => {
 
     const getImageDownloader = useImageDownloader()
-    // const { size: { windowWidth } } = useWindowResize()
+    const { windowWidth } = useWindowResize()
+    // const [imgStyle, setImgStyle] = useState({});
 
     const [showDropdown, setShowDropdown] = useState<dropdownType>({
         button: false,
@@ -68,6 +69,42 @@ const ModalShareTemplate = ({ result }: { result: ResultProp }) => {
         visible: { opacity: 1 }
     };
 
+    // const getImgSize = () => {
+    //     const padding = windowWidth > 1000 ? 200 : Math.floor(windowWidth * 0.05);
+    //     const obj = { aspectRatio: `${result.width}/${result.height}` };
+
+    //     // if (imgRef.current) {
+    //     //   if (imgRef.current.width < windowWidth - padding) {
+    //     //     return { ...obj, height: `calc(100vh - 50px - 20px - 140px)` };
+    //     //   } else {
+    //     //     return { ...obj, width: `${windowWidth - padding - 20}px` };
+    //     //   }
+    //     if (result.width < result.height) {
+    //         return { ...obj, height: `calc(100vh - 50px - 20px - 140px)` };
+    //     } else {
+    //         return { ...obj, width: `${windowWidth - padding - 20}px` };
+    //     }
+    //     // }
+
+    //     // return obj; // Return default style in case imgRef.current is not set
+    // };
+
+    const getImgSize = () => {
+        const aspectRatio = result.width / result.height;
+        const obj = { aspectRatio };
+    
+        if (result.height > result.width) {
+          return { ...obj, height: `calc(100vh - 220px)`, width: 'auto' };
+        } else {
+          if (windowWidth > 900) {
+            return { ...obj, height: `calc(100vh - 220px)`, maxWidth: '772px' };
+          } else {
+            return { ...obj, width: 'calc(90vw)' };
+          }
+        }
+      };
+
+      const imgStyle = getImgSize();
 
     return (
         <>
@@ -121,15 +158,7 @@ const ModalShareTemplate = ({ result }: { result: ResultProp }) => {
                 </div>
             </div>
 
-            {/* <ImageComponent item={result} clickEvent={()=> {}} showUserDetails={false} /> */}
-
-            <img onClick={() => window.open(`${window.location.origin}/fullScreenImage/${result.id}`, '_blank')} src={result.urls.regular} className='ModalImage' alt={result.alt_description}
-                style={
-                    // (result.height > result.width) ? 
-                    { height: `calc(100vh - 50px - 20px - 140px)`, aspectRatio: `${result.width}/${result.height}` }
-                    // : (windowWidth>900)? { width: 'calc(100vw - 220px)',aspectRatio: `${result.width}/${result.height}`} : { width: 'calc(100vw - 10vw - 20px)',aspectRatio: `${result.width}/${result.height}`}
-                }
-            />
+            <img onClick={() => window.open(`${window.location.origin}/fullScreenImage/${result.id}`, '_blank')} src={result.urls.regular} className='ModalImage' alt={result.alt_description} style={{aspectRatio: `${result.width / result.height}`, height: `calc(100vh - 220px)`, maxWidth: '772px'}}/>
 
             <div className="imageDetails">
                 <p className="description">{AbcType}</p>
@@ -146,7 +175,7 @@ const ModalShareTemplate = ({ result }: { result: ResultProp }) => {
                 </div>
                 <div className="constantData">
                     {/* <div className="details"> */}
-                    <p><MdOutlineDateRange />Published at {dateInReadableFormat}</p>
+                    <p><MdOutlineDateRange />Published on {dateInReadableFormat}</p>
                     {
                         result.location?.name &&
                         <p>< CiLocationOn />{result.location.name ?? ''}</p>
