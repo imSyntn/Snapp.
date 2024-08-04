@@ -9,18 +9,18 @@ export const useFetch = (prop: string) => {
 
     useEffect(() => {
         const getData = async () => {
-            console.log(prop)
-            // if (!prop) {
-            //     setLoading(false)
-            //     return;
-            // };
-            if(prop == '') {
+            if (prop == '') {
                 setLoading(false)
                 return;
             }
             try {
                 setLoading(true)
-                const req = await fetch(prop);
+                const req = await fetch(prop, {
+                    method: 'GET',
+                    headers: {
+                        "Content-Type": "application/json",
+                    }
+                });
                 const res = await req.json()
                 // if()
                 setData(res.results || res)

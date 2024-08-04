@@ -19,7 +19,8 @@
     align-items: center;
     justify-content: space-between;
     overflow-y: auto;
-    overscroll-behavior: contain;
+    overscroll-behavior-y: contain;
+
     // scroll-behavior: smooth;
     &::-webkit-scrollbar {
         display: none;

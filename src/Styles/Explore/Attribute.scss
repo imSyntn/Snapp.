@@ -1,0 +1,87 @@
+.attributionDiv {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    height: 100dvh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    // backdrop-filter: blur(1px);
+    background: #00000088;
+    z-index: 999;
+
+    .attribute {
+        position: relative;
+        width: 360px;
+        // transform: translate(-50%, -50%);
+        background-color: #fff;
+        box-shadow: inset 50px 48px rgb(255, 106, 69);
+        color: black;
+        padding: 20px;
+        display: flex;
+        border: none;
+        border-top-right-radius: 20px;
+        border-bottom-left-radius: 20px;
+
+        >.attribution {
+            width: 100%;
+
+            .copy {
+                border: none;
+                border-radius: 5px;
+                background: rgb(211, 211, 211);
+                margin-top: 10px;
+                padding: 5px 10px;
+                display: flex;
+                flex-wrap: nowrap;
+                justify-content: space-between;
+                align-items: center;
+                svg {
+                    cursor: pointer;
+                }
+                p {
+                    text-wrap: wrap;
+                    a {
+                        color: rgb(109, 109, 109);
+                    }
+                }
+            }
+        }
+
+        >svg {
+            cursor: pointer;
+            position: absolute;
+            top: 15px;
+            font-size: 25px;
+            right: 15px;
+        }
+
+        >img {
+            border: none;
+            border-radius: 5px;
+            margin-right: 20px;
+            height: 64px;
+            width: 64px;
+        }
+
+        h3 {
+            em {
+                color: red;
+            }
+        }
+
+        p {
+
+            span {
+                color: red;
+                font-family: "Caveat", cursive;
+                font-optical-sizing: auto;
+                font-style: normal;
+                font-weight: 900;
+                font-size: 20px;
+            }
+        }
+    }
+
+}

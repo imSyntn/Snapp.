@@ -1,13 +1,13 @@
-import { memo, useState, useEffect, useRef, useLayoutEffect } from 'react'
+import React, { memo, useState, useEffect, useContext } from 'react'
 import '../Styles/ModalShareTemplate.scss'
 import { ResultProp } from '../App.types'
 import { useAbcType } from '../Utils/useAbcType';
 import { useDateTime } from '../Utils/useDateTime';
 import { useImageDownloader } from '../Utils/useImageDownloader';
-import { useWindowResize } from '../Utils/useWindowResize';
+// import { useWindowResize } from '../Utils/useWindowResize';
 
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
-import { RxCross2 } from "react-icons/rx";
+// import { RxCross2 } from "react-icons/rx";
 import { FaShare, FaInstagram } from "react-icons/fa";
 import { MdOutlineDateRange } from "react-icons/md";
 import { FiCamera } from "react-icons/fi";
@@ -17,7 +17,9 @@ import { FiDownload } from "react-icons/fi";
 import { FaCcPaypal, FaXTwitter } from "react-icons/fa6";
 import { TbWorldWww } from "react-icons/tb";
 import { SiTicktick } from "react-icons/si";
-import { motion, AnimatePresence } from 'framer-motion'
+import { motion } from 'framer-motion'
+import { downloadInitiatedContext } from './../App';
+// import Attribute from './Explore/Attribute';
 // import ImageComponent from './Explore/ImageComponent';
 
 
@@ -29,7 +31,7 @@ interface dropdownType {
 const ModalShareTemplate = ({ result }: { result: ResultProp }) => {
 
     const getImageDownloader = useImageDownloader()
-    const { windowWidth } = useWindowResize()
+    // const { windowWidth } = useWindowResize()
     // const [imgStyle, setImgStyle] = useState({});
 
     const [showDropdown, setShowDropdown] = useState<dropdownType>({
@@ -37,7 +39,12 @@ const ModalShareTemplate = ({ result }: { result: ResultProp }) => {
         text: false
     })
     const [copied, setCopied] = useState<boolean>(false)
-    const [downloadInitiated, setDownloadInitiated] = useState<boolean>(false)
+
+    const attributeContext = useContext(downloadInitiatedContext)
+    if (!attributeContext) {
+        return null
+    }
+    const { setDownloadInitiated } = attributeContext;
 
     const AbcType = useAbcType(result.alt_description)
     const dateInReadableFormat = useDateTime(result.created_at)
@@ -51,81 +58,21 @@ const ModalShareTemplate = ({ result }: { result: ResultProp }) => {
 
     useEffect(() => {
         setCopied(false)
-        setDownloadInitiated(false)
+        // setDownloadInitiated(false)
     }, [])
 
     const dropdownVariants = {
         hidden: { scaleY: 0 },
-        visible: {
-            scaleY: 1,
-            transition: {
-                staggerChildren: 0.1
-            }
-        }
+        visible: { scaleY: 1 }
     };
-
-    const itemVariants = {
-        hidden: { opacity: 0 },
-        visible: { opacity: 1 }
-    };
-
-    // const getImgSize = () => {
-    //     const padding = windowWidth > 1000 ? 200 : Math.floor(windowWidth * 0.05);
-    //     const obj = { aspectRatio: `${result.width}/${result.height}` };
-
-    //     // if (imgRef.current) {
-    //     //   if (imgRef.current.width < windowWidth - padding) {
-    //     //     return { ...obj, height: `calc(100vh - 50px - 20px - 140px)` };
-    //     //   } else {
-    //     //     return { ...obj, width: `${windowWidth - padding - 20}px` };
-    //     //   }
-    //     if (result.width < result.height) {
-    //         return { ...obj, height: `calc(100vh - 50px - 20px - 140px)` };
-    //     } else {
-    //         return { ...obj, width: `${windowWidth - padding - 20}px` };
-    //     }
-    //     // }
-
-    //     // return obj; // Return default style in case imgRef.current is not set
-    // };
-
-    const getImgSize = () => {
-        const aspectRatio = result.width / result.height;
-        const obj = { aspectRatio };
-    
-        if (result.height > result.width) {
-          return { ...obj, height: `calc(100vh - 220px)`, width: 'auto' };
-        } else {
-          if (windowWidth > 900) {
-            return { ...obj, height: `calc(100vh - 220px)`, maxWidth: '772px' };
-          } else {
-            return { ...obj, width: 'calc(90vw)' };
-          }
-        }
-      };
-
-      const imgStyle = getImgSize();
 
     return (
         <>
-            <AnimatePresence>
-                {
-                    downloadInitiated && (
-                        <motion.div className="attributionDiv"
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            exit={{ opacity: 0 }}
-                            transition={{ duration: 0.3 }}>
-                            <RxCross2 onClick={() => setDownloadInitiated(false)} />
-                            <img src={result.user.profile_image.medium} alt="" />
-                            <div className="attribution">
-                                <h3>SayThanks<em>!</em></h3>
-                                <p>Give a shoutout to <span>{result.user.name}</span></p>
-                            </div>
-                        </motion.div>
-                    )
-                }
-            </AnimatePresence>
+            {/* {
+                downloadInitiated && (
+                    <Attribute result={downloadInitiated} />
+                )
+            } */}
             <div className="userDetails-downloadLink">
                 <div className="userDetails">
                     <img src={result.user.profile_image.medium} alt="Profile Image" />
@@ -140,16 +87,16 @@ const ModalShareTemplate = ({ result }: { result: ResultProp }) => {
                     </div>
                 </div>
                 <div className="dropdown">
-                    <button onClick={() => setShowDropdown(prev => ({ ...prev, button: !prev.button }))}>Download {showDropdown.button ? <IoIosArrowUp /> : <IoIosArrowDown />}</button>
+                    <motion.button onClick={() => setShowDropdown(prev => ({ ...prev, button: !prev.button }))} whileTap={{ scale: 0.85 }}>Download {showDropdown.button ? <IoIosArrowUp /> : <IoIosArrowDown />}</motion.button>
                     {
                         showDropdown.button && (
                             <motion.div className='dropdownContentDiv' variants={dropdownVariants} initial={'hidden'} animate={'visible'}>
                                 {
                                     Object.entries(result.urls).map(([name, link]) => (
-                                        <motion.p key={name} variants={itemVariants} onClick={() => {
-                                            // getImageDownloader(link, `${result.alt_description}.jpg`);
-                                            setDownloadInitiated(true)
-                                        }}>{name} <FiDownload /></motion.p>
+                                        <p key={name} onClick={() => {
+                                            getImageDownloader(link, `${result.alt_description}.jpg`);
+                                            setDownloadInitiated(result)
+                                        }}>{name} <FiDownload /></p>
                                     ))
                                 }
                             </motion.div>
@@ -158,7 +105,7 @@ const ModalShareTemplate = ({ result }: { result: ResultProp }) => {
                 </div>
             </div>
 
-            <img onClick={() => window.open(`${window.location.origin}/fullScreenImage/${result.id}`, '_blank')} src={result.urls.regular} className='ModalImage' alt={result.alt_description} style={{aspectRatio: `${result.width / result.height}`, height: `calc(100vh - 220px)`, maxWidth: '772px'}}/>
+            <img onClick={() => window.open(`${window.location.origin}/fullScreenImage/${result.id}`, '_blank')} src={result.urls.regular} className='ModalImage' alt={result.alt_description} style={{ aspectRatio: `${result.width / result.height}`, height: `calc(100vh - 220px)`, maxWidth: '772px' }} />
 
             <div className="imageDetails">
                 <p className="description">{AbcType}</p>
@@ -171,7 +118,7 @@ const ModalShareTemplate = ({ result }: { result: ResultProp }) => {
                         <h3>Downloads</h3>
                         <p>{result.downloads ?? 'Not available'}</p>
                     </div>
-                    <button onClick={handleShareLink} style={copied ? { backgroundColor: '#80ff80' } : {}}>{copied ? <><SiTicktick />Copied</> : <><FaShare />Share</>}</button>
+                    <motion.button whileTap={{ scale: 0.85 }} onClick={handleShareLink} style={copied ? { backgroundColor: '#80ff80' } : {}}>{copied ? <><SiTicktick />Copied</> : <><FaShare />Share</>}</motion.button>
                 </div>
                 <div className="constantData">
                     {/* <div className="details"> */}
@@ -190,16 +137,16 @@ const ModalShareTemplate = ({ result }: { result: ResultProp }) => {
                                 <motion.div className="dropdownContentDiv" variants={dropdownVariants} initial={'hidden'} animate={'visible'}>
                                     {
                                         Object.entries(result.exif).map(([name, value]) => (
-                                            <>
+                                            <React.Fragment key={name}>
                                                 {
                                                     value && (
                                                         <>
-                                                            <motion.h3 variants={itemVariants}>{name}</motion.h3>
-                                                            <motion.p variants={itemVariants}>{value ?? ''}</motion.p>
+                                                            <h3>{name.charAt(0).toUpperCase() + name.slice(1) + ':'}</h3>
+                                                            <p>{value ?? ''}</p>
                                                         </>
                                                     )
                                                 }
-                                            </>
+                                            </React.Fragment>
                                         ))
                                     }
                                 </motion.div>

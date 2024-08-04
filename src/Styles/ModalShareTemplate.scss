@@ -1,64 +1,6 @@
 @import './Variables.scss';
 
-.attributionDiv {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    // transform: translateX(-50%);
-    width: 350px;
-    transform: translate(-50%, -50%);
-    background-color: #fff;
-    // -webkit-box-shadow: 12px 12px 39px #36383e, -12px -12px 39px #000000;
-    // box-shadow: inset  50px 50px rgba(4, 0, 255, 0.491);
-    // mix-blend-mode: overlay;
-    box-shadow: inset 50px 50px rgb(255, 106, 69);
-    color: black;
-    padding: 20px;
-    display: flex;
-    border: none;
-    border-top-right-radius: 20px;
-    border-bottom-left-radius: 20px;
-
-    >svg {
-        cursor: pointer;
-        position: absolute;
-        top: 15px;
-        font-size: 25px;
-        right: 15px;
-        // color: white;
-    }
-
-    >img {
-        margin-right: 20px;
-        height: 64px;
-        width: 64px;
-        // border-radius: 50%;
-    }
-
-    h3 {
-
-        // color: white;
-        em {
-            color: red;
-        }
-    }
-
-    p {
-
-        // font-size: 20px;
-        span {
-            color: red;
-            font-family: "Caveat", cursive;
-            font-optical-sizing: auto;
-            font-style: normal;
-            font-weight: 900;
-            font-size: 20px;
-        }
-    }
-}
-
 .userDetails-downloadLink {
-    // border: 1px solid red;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -89,8 +31,6 @@
 
             .id {
                 display: flex;
-
-                // justify-content: space-between;
                 a {
                     color: white;
                     font-size: 1.1rem;
@@ -103,7 +43,6 @@
     >.dropdown {
         position: relative;
 
-        // bor
         button {
             display: flex;
             align-items: center;
@@ -119,8 +58,6 @@
                 font-size: 20px;
                 margin-left: 5px;
                 height: 100%;
-                // transition: all 0.3s;
-                // border-left: 1px solid;
             }
         }
 
@@ -134,7 +71,6 @@
             border-radius: 5px;
 
             >p {
-                // text-align: center;
                 font-size: 1.03rem;
                 display: flex;
                 justify-content: space-between;
@@ -262,7 +198,8 @@
                 background: #000000b7;
                 width: 100%;
                 right: 0;
-                bottom: 25px;
+                bottom: 35px;
+                // top: 0;
                 padding: 10px;
                 border: none;
                 border-radius: 5px;

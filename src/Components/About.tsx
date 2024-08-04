@@ -4,7 +4,7 @@ import '../Styles/About.scss'
 const About = () => {
   return (
     <div className='About'>
-      <h1>Snapp<span>!</span></h1>
+      <h1 id='no-selection'>Snapp<span>!</span></h1>
       <p>Welcome to Snapp, your ultimate destination for discovering, sharing, and organizing stunning images from around the world. Leveraging the powerful Unsplash API, Snapp brings you a vast collection of high-quality photos right at your fingertips.</p>
       <h2>What is Snapp?</h2>
       <p>Snapp is a web application designed to enhance your visual experience. Whether you're a photographer, designer, or simply an image enthusiast, Snapp provides a seamless platform to explore a diverse range of images. Our features include:</p>

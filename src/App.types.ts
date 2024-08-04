@@ -55,7 +55,6 @@ export interface ResultProp {
 
 
 
-
 export interface NameDescObj {
     name: string,
     desc: string,
@@ -78,6 +77,6 @@ export interface SearchType {
     searchVal: string
 }
 
-export interface UserLoginProp {
-    userName: string
-}
+// export interface UserLoginProp {
+//     userName: string
+// }

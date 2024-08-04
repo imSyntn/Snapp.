@@ -22,6 +22,8 @@ header {
         font-optical-sizing: auto;
         font-style: normal;
         font-size: 3rem;
+        position: relative;
+        z-index: 5;
         // background-image: linear-gradient(to right, #92fe9d 0%, #00c9ff 100%);
         // color: transparent;
         // background-clip: text;
@@ -60,30 +62,18 @@ header {
         }
 
         >.circle {
-            // display: none;
             position: absolute;
-            // top: -500px;
-            // right: -500px;
-            top: 40%;
-            left: 35%;
-            transform: translate(-35%, -40%);
-            width: 0;
-            height: 0;
-            border: none;
-            border-radius: 50%;
-            // border-bottom-left-radius: 50%;
-            background: red;
-            z-index: 1;
-            transition: all 0.5s;
-        }
-
-        .view {
-            // top: -200px;
-            // right: -150px;
+            top: 50%;
+            left: 50%;
             width: 400px;
             height: 400px;
-            // transform: scale(3);
-            transition: all 0.1s;
+            border: none;
+            border-radius: 50%;
+            opacity: 0;
+            // background: red;
+            background: linear-gradient(111.3deg, rgb(252, 56, 56) 11.7%, rgb(237, 13, 81) 81.7%);
+            // background: radial-gradient(486px at 37.5% -17.2%, rgb(255, 2, 2) 0%, rgb(254, 78, 172) 90%);
+            z-index: 1;
         }
     }
 }
@@ -211,10 +201,11 @@ ul {
         // background: yellow;
         // border: 1px solid red;
         overflow: hidden;
-        transition: all 0.2s;
+        transition: all 0.1s;
         z-index: 5;
 
         >a {
+            margin: 0;
             text-decoration: none;
             font-size: 1.1rem;
             font-weight: 900 !important;

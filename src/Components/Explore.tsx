@@ -1,14 +1,16 @@
-import { createContext, useState } from 'react'
+import { createContext, useState, useEffect } from 'react'
 import '../Styles/Explore/Explore.scss'
 import HeroSection from './Explore/HeroSection'
 import ResultImages from './Explore/ResultImages'
 import { SearchType } from '../App.types'
+
 // import Loader from './Loader'
 
 interface SearchContextType {
   search: SearchType,
   setSearch: React.Dispatch<React.SetStateAction<SearchType>>
 }
+
 
 export const searchContext = createContext<SearchContextType | undefined>(undefined);
 
@@ -24,8 +26,8 @@ const Explore = () => {
   })
 
   // useEffect(() => {
-  //   console.log(search)
-  // }, [search])
+
+  // }, [])
 
   return (
     <div className='Explore'>

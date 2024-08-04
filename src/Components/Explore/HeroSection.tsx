@@ -1,8 +1,9 @@
-import { useRef, useState, useContext, useCallback } from 'react'
+import { useRef, useState, useContext, useCallback, useEffect } from 'react'
 import '../../Styles/Explore/HeroSection.scss'
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import { useFetch } from '../../Utils/useFetch';
 import { searchContext } from '../Explore';
+import { motion } from 'framer-motion';
 
 interface LeftRight {
     left: boolean,
@@ -29,6 +30,7 @@ const HeroSection = () => {
     })
 
     const topicsDivRef = useRef<HTMLDivElement>(null)
+    // const catagoriesRef = useRef<HTMLDivElement>(null)
 
     const arrowScrollAnimation = useCallback((params: string) => {
         topicsDivRef.current && (topicsDivRef.current.scrollLeft += (params == '+' ? 100 : -100));
@@ -52,7 +54,7 @@ const HeroSection = () => {
                 };
             }
         }, 350)
-    },[topicsDivRef.current])
+    }, [topicsDivRef.current])
 
     const searchImageFunction = useCallback(() => setSearch({
         topic: {
@@ -61,23 +63,39 @@ const HeroSection = () => {
             description: ''
         },
         searchVal: searchText
-    }),[searchText])
+    }), [searchText])
+
+    // useEffect(() => {
+    //     catagoriesRef.current?.addEventListener('scroll', (e) => {
+    //         let scrollLeft = e.target?.scrollLeft;
+    //         if (e.target?.scrollLeft > scrollLeft) {
+    //             console.log('+')
+    //         } else {
+    //             console.log('-')
+    //         }
+
+    //     }, { capture: true })
+    // }, [])
 
     return (
         <div className='HeroSection'>
-            <div className="catagories">
+            <div className="catagories" 
+            // ref={catagoriesRef}
+            >
                 <div className="slider" style={(!showLeftRight.left) ? { display: 'none' } : {}} onClick={() => arrowScrollAnimation('-')}><FaChevronLeft /></div>
                 <div className="topicsDiv" ref={topicsDivRef}>
                     {
-                        !loading && data.map((item,index) => (
-                            <p key={item.title+index} onClick={() => setSearch({
-                                topic: {
-                                    id: item.id,
-                                    title: item.title,
-                                    description: item.description
-                                },
-                                searchVal: ''
-                            })} >{item.title}</p>
+                        !loading && data.map((item, index) => (
+                            <motion.p key={item.title + index}
+                                onClick={() => setSearch({
+                                    topic: {
+                                        id: item.id,
+                                        title: item.title,
+                                        description: item.description
+                                    },
+                                    searchVal: ''
+                                })}
+                                whileTap={{ scale: 0.85 }} >{item.title}</motion.p>
                         ))
                     }
                 </div>
@@ -98,18 +116,18 @@ const HeroSection = () => {
                     }
                 </div>
                 <div className="searchDiv">
-                    <input type="text" name="" id="" placeholder='Search here...' onChange={(e) => setSearchText(e.target.value)} onKeyDown={(e)=> {
-                        if(e.key == 'Enter'){
+                    <input type="text" name="" id="" placeholder='Search here...' onChange={(e) => setSearchText(e.target.value)} onKeyDown={(e) => {
+                        if (e.key == 'Enter') {
                             searchImageFunction()
                             setSearchText('')
                         }
                     }} value={searchText}
                     />
-                    <div className="svgWrapper" onClick={searchImageFunction}>
+                    <motion.div className="svgWrapper" onClick={searchImageFunction} whileTap={{ scale: 0.85 }}>
                         <svg width="800px" height="800px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M11 6C13.7614 6 16 8.23858 16 11M16.6588 16.6549L21 21M19 11C19 15.4183 15.4183 19 11 19C6.58172 19 3 15.4183 3 11C3 6.58172 6.58172 3 11 3C15.4183 3 19 6.58172 19 11Z" stroke="#000000" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                         </svg>
-                    </div>
+                    </motion.div>
 
                 </div>
             </div>

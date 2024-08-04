@@ -3,9 +3,24 @@
 .ResultImages {
     height: fit-content;
     padding-inline: $paddingInline;
+    display: flex;
+    justify-content: space-between;
+
     >.Loader {
         height: fit-content;
     }
+
+    .MansoryDiv {
+        // flex: none !important;
+        width: calc((100vw - ($paddingInline * 2) - ($gap * 2)) / 3);
+        // div {
+        //     width: fit-content;
+        // }
+    }
+
+    // [data-masonry-id="Masonry-:rd:"] {
+    //     justify-content: space-between !important;
+    // }
 
     .imageWrapper {
         width: calc((100vw - ($paddingInline * 2) - ($gap * 2)) / 3);
@@ -14,11 +29,11 @@
         position: relative;
         overflow: hidden;
         transition: all 0.3s;
-        cursor: url('../../assets/zoom-in.png'), zoom-in;
 
         >img {
             width: 100%;
             transition: all 0.3s;
+            cursor: url('../../assets/zoom-in.png'), zoom-in;
         }
 
         >.userDetails {
@@ -54,19 +69,28 @@
                 cursor: pointer;
                 background: rgb(255, 255, 255);
                 border: none;
-                border-radius: 10px;
+                border-radius: 2px;
                 padding-block: 5px;
+                transition: all 0.3s;
 
                 svg {
                     width: 50px;
                     fill: black;
                 }
+
+                // &:hover {
+                //     // background-color: rgb(150, 94, 255);
+
+                //     svg {
+                //         fill: white;
+                //     }
+                // }
             }
         }
 
         &:hover {
             >img {
-                filter: brightness(70%);
+                filter: brightness(50%);
                 transform: scale(1.1);
             }
 
@@ -90,24 +114,143 @@
     //     // }
     // }
 
-    @media screen and (max-width: 900px) {
-        padding-inline: $paddingInlineRespinsive;
+    @media screen and (max-width: 1140px) {
+        padding-inline: $paddingInline;
+
         // columns: 2;
+        .MansoryDiv {
+            // flex: none !important;
+            // width: calc((100vw - ($paddingInline * 2) - ($gap * 2)) / 2);
+            // div {
+                width: fit-content;
+            // }
+        }
+
+        // img,
+        .imageWrapper {
+            width: calc((100vw - ($paddingInline * 2) - ($gap)) / 2);
+        }
+    }
+    @media screen and (max-width: 900px) {
+            padding-inline: $paddingInlineRespinsive;
+            
+        .MansoryDiv {
+            // flex: none !important;
+            width: calc((100vw - ($paddingInlineRespinsive * 2) - ($gap * 2)) / 2);
+            // div {
+            //     width: fit-content;
+            // }
+        }
 
         // img,
         .imageWrapper {
             width: calc((100vw - ($paddingInlineRespinsive * 2) - ($gap)) / 2);
         }
     }
+    // @media screen and (max-width: 900px) {
+    //     padding-inline: $paddingInlineRespinsive;
+
+    //     // columns: 2;
+    //     .MansoryDiv {
+    //         // flex: none !important;
+    //         width: calc((100vw - ($paddingInline * 2) - ($gap * 2)) / 2);
+    //         // div {
+    //         //     width: fit-content;
+    //         // }
+    //     }
+
+    //     // img,
+    //     .imageWrapper {
+    //         width: calc((100vw - ($paddingInlineRespinsive * 2) - ($gap)) / 2);
+    //     }
+    // }
 
     // @media screen and (max-width: 884px) {
     // }
 
-    @media screen and (max-width: 500px) {
+    @media screen and (max-width: 550px) {
         // columns: 1;
+        .MansoryDiv {
+            // flex: none !important;
+            width: calc((100vw - ($paddingInline * 2) - ($gap * 2)));
+            // div {
+            //     width: fit-content;
+            // }
+        }
 
         .imageWrapper {
             width: calc((100vw - ($paddingInlineRespinsive * 2)));
+            // margin-bottom: $gap;
+            // break-inside: avoid;
+            // position: relative;
+            // overflow: hidden;
+            // transition: all 0.3s;
+            // cursor: url('../../assets/zoom-in.png'), zoom-in;
+            // border: 1px solid red;
+    
+            // >img {
+            //     width: 100%;
+            //     transition: all 0.3s;
+            // }
+    
+            >.userDetails {
+                position: relative;
+                // border: 1px solid red;
+                left: 0;
+                bottom: 0;
+                // padding-inline: 10px;
+                margin-block: 5px;
+                // width: 100%;
+                // display: flex;
+                // align-items: center;
+                // justify-content: space-between;
+                // transition: all 0.3s;
+    
+                // .user {
+                //     display: flex;
+                //     align-items: center;
+    
+                //     img {
+                //         width: 40px;
+                //         height: 40px;
+                //         border-radius: 50%;
+                //     }
+    
+                //     p {
+                //         margin-left: 10px;
+                //         text-align: center;
+                //     }
+                // }
+    
+                // button {
+                //     cursor: pointer;
+                //     background: rgb(255, 255, 255);
+                //     border: none;
+                //     border-radius: 10px;
+                //     padding-block: 5px;
+                //     transition: all 0.3s;
+    
+                //     svg {
+                //         width: 50px;
+                //         fill: black;
+                //     }
+    
+                //     // &:hover {
+                //     //     background-color: rgb(150, 94, 255);
+    
+                //     //     svg {
+                //     //         fill: white;
+                //     //     }
+                //     // }
+                // }
+            }
+    
+            &:hover {
+                >img {
+                    filter: none;
+                    transform: none;
+                }
+            }
         }
     }
 }
