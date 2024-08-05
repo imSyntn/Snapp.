@@ -40,7 +40,7 @@ const MainSection = () => {
                 <div className="banner"></div>
                 <div className="banner">
                     <h1>Discover Beautiful Images</h1>
-                    <p>Easy Sharing, Save and Organize</p>
+                    <p>Easy Sharing.</p>
                 </div>
             </div>
 
