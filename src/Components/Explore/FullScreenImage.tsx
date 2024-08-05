@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { ResultProp } from '../../App.types'
+import '../../Styles/Explore/FullScreenImage.scss'
 
 const FullScreenImage = () => {
 
@@ -27,11 +28,12 @@ const FullScreenImage = () => {
         getData()
     }, [])
 
+
     return (
-        <div className='FullScreenImage' data-lenis-prevent style={{height: '100vh', width: '100%',position:'fixed', zIndex: '100', top: '0', overflow: 'auto', backgroundColor: 'black', display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
+        <div className='FullScreenImage' data-lenis-prevent>
             {
                 data && (
-                    <img src={data.urls.raw || data.urls.full || data.urls.regular} alt="requested fullscreen view of image" style={{width: `${data.width}`, height: `${data.height}`}}  />
+                    <img src={data.urls.raw || data.urls.full || data.urls.regular} alt="requested fullscreen view of image" style={(data.width > data.height) ? {width: '80%', aspectRatio: data.width/data.height} : {height: '100%', aspectRatio: data.width/data.height}}  />
                 )
             }
         </div>

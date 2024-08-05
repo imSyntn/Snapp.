@@ -14,10 +14,13 @@
 
     .text {
         margin-top: 20px;
-        width: 350px;
+        // width: 350px;
         display: flex;
         flex-direction: column;
         justify-content: center;
+        h1 {
+            font-size: 40px;
+        }
         // border: 1px solid yellow;
     }
 
@@ -25,12 +28,10 @@
         flex-direction: row-reverse;
         margin-block: 30px;
 
-        @media screen and (max-width: 1050px) {
-            .text {
-                align-items: end;
-            }
-        }
     }
+    
+    // @media screen and (max-width: 560px) {
+    // }
 
     @media screen and (max-width: 900px) {
         padding-inline: $paddingInlineRespinsive;
@@ -40,5 +41,8 @@
         img {
             width: calc(100vw - ($paddingInlineRespinsive * 2));
         }
+        
+        flex-direction: column !important;
+        align-items: center !important;
     }
 }

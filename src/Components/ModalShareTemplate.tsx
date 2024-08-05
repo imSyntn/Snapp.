@@ -17,6 +17,7 @@ import { FiDownload } from "react-icons/fi";
 import { FaCcPaypal, FaXTwitter } from "react-icons/fa6";
 import { TbWorldWww } from "react-icons/tb";
 import { SiTicktick } from "react-icons/si";
+import { FaUnsplash } from "react-icons/fa";
 import { motion } from 'framer-motion'
 import { downloadInitiatedContext } from './../App';
 // import Attribute from './Explore/Attribute';
@@ -83,6 +84,7 @@ const ModalShareTemplate = ({ result }: { result: ResultProp }) => {
                             {result.user.social.twitter_username && <a target='_blank' href={`https://x.com/${result.user.social.twitter_username}`}><FaXTwitter /></a>}
                             {result.user.social.portfolio_url && <a target='_blank' href={result.user.social.portfolio_url}><TbWorldWww /></a>}
                             {result.user.social.paypal_email && <a target='_blank' href={result.user.social.paypal_email}><FaCcPaypal /></a>}
+                            <a href={result.user.links.html}><FaUnsplash /></a>
                         </div>
                     </div>
                 </div>
@@ -105,7 +107,9 @@ const ModalShareTemplate = ({ result }: { result: ResultProp }) => {
                 </div>
             </div>
 
-            <img onClick={() => window.open(`${window.location.origin}/fullScreenImage/${result.id}`, '_blank')} src={result.urls.regular} className='ModalImage' alt={result.alt_description} style={{ aspectRatio: `${result.width / result.height}`, height: `calc(100vh - 220px)`, maxWidth: '772px' }} />
+            {/* <div className='imgWrapperDiv' style={{backgroundColor: result.color}}> */}
+                <img onClick={() => window.open(`${window.location.origin}/fullScreenImage/${result.id}`, '_blank')} src={result.urls.regular} className='ModalImage' id={(result.height > result.width) ? 'verticalImg' : ''} alt={result.alt_description} style={{ aspectRatio: `${result.width / result.height}`, height: `calc(100vh - 220px)`, maxWidth: '772px' }} />
+            {/* </div> */}
 
             <div className="imageDetails">
                 <p className="description">{AbcType}</p>

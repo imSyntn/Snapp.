@@ -28,7 +28,7 @@ const Attribute = ({ result }: { result: any }) => {
                     <RxCross2 onClick={() => setDownloadInitiated(false)} />
                     <img src={result.user.profile_image.medium} alt="" />
                     <div className="attribution">
-                        <h3>SayThanks<em>!</em></h3>
+                        <h3>Downloading</h3>
                         <p>Give a shoutout to <span>{result.user.name}</span></p>
                         <div className="copy">
                             <p>Photo by <a href={result.user.links.html} target='_blank'>{result.user.name}</a></p>

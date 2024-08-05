@@ -10,9 +10,8 @@ const About = () => {
       <p>Snapp is a web application designed to enhance your visual experience. Whether you're a photographer, designer, or simply an image enthusiast, Snapp provides a seamless platform to explore a diverse range of images. Our features include:</p>
 
       <ul>
-        <li><span>Discover:</span> Browse through an extensive gallery of beautiful photos sourced from Unsplash, an acclaimed community of photographers.</li>
-        <li><span>Share:</span> Easily share your favorite images with friends and family with just a few clicks. Snapp makes image sharing quick and intuitive.</li>
-        <li><span>Organize:</span> Save your favorite photos to collections, allowing you to keep your inspirations and interests neatly organized and easily accessible.</li>
+        <li><span>Discover:</span> Explore an extensive gallery of breathtaking photos sourced from Unsplash, a renowned community of photographers. Snapp’s sophisticated search functionality allows you to filter images by category, color, orientation, and more, ensuring you find exactly what you're looking for.</li>
+        <li><span>Share:</span> Effortlessly share your favorite images with friends and family. With just a few clicks, you can spread inspiration and creativity, whether through social media, email, or direct links. Snapp simplifies the sharing process, making it quick and intuitive.</li>
       </ul>
       <h2>Why Snapp?</h2>
       <p>We believe in the power of visuals to inspire and connect people. Snapp is built with simplicity and user experience in mind, ensuring that you can effortlessly find and enjoy the images that speak to you. Our integration with Unsplash guarantees that you always have access to a rich library of top-quality photos.</p>

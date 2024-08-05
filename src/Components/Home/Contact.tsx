@@ -18,7 +18,7 @@ const Contact = () => {
         data: '+91 8768954027',
         Icon: ImPhone
     },{
-        type: 'Office',
+        type: 'Location',
         details: 'Join our community and discover the world through images.',
         data: 'Kolkata',
         Icon: FaLocationDot

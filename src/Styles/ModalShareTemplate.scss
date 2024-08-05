@@ -31,6 +31,8 @@
 
             .id {
                 display: flex;
+                margin-top: 5px;
+
                 a {
                     color: white;
                     font-size: 1.1rem;
@@ -104,13 +106,30 @@
     }
 }
 
+// .imgWrapperDiv {
+//     margin-block: 10px;
+//     padding: 0px !important;
+
+// height: fit-content;
 .ModalImage {
     // height: calc(100vh - 50px - 20px - 140px);
     cursor: url('../assets/zoom-in.png') 12 12, zoom-in;
-    margin-block: 10px;
+
     @media screen and (max-width: 900px) {
         width: calc(90vw);
         height: auto !important;
+    }
+}
+
+// }
+
+#verticalImg {
+    @media screen and (max-width: 900px) {
+        width: calc(70vw) !important;
+    }
+
+    @media screen and (max-width: 500px) {
+        width: calc(90vw) !important;
     }
 }
 

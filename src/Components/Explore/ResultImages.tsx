@@ -7,12 +7,13 @@ import Loader from '../Loader'
 import { ResultProp } from '../../App.types'
 import ImageComponent from './ImageComponent'
 import Masonry from 'react-layout-masonry';
+import Modal from './Modal'
 // import { downloadInitiatedContext } from '../../App';
 // import Attribute from './Attribute'
 
 // import { useWindowResize } from '../../Utils/useWindowResize'
 
-const Modal = lazy(() => import('./Modal'))
+// const Modal = lazy(() => import('./Modal'))
 
 
 // interface sizeType {
@@ -120,7 +121,9 @@ const ResultImages = () => {
   return (
     <>
       {
-        (modalIndex !== -1) && <Suspense fallback={<Loader />}><Modal result={results[modalIndex]} setModalIndex={setModalIndex} /></Suspense>
+        (modalIndex !== -1) && (
+          <Modal result={results[modalIndex]} setModalIndex={setModalIndex} />
+        )
       }
       {/* {
         downloadInitiated && (
