@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import '../Styles/Share.scss'
 import { useParams } from 'react-router-dom'
 import ModalShareTemplate from './ModalShareTemplate'
-import { useFetch } from '../Utils/useFetch'
+// import { useFetch } from '../Utils/useFetch'
 import { ResultProp } from '../App.types'
 import Loader from './Loader'
 

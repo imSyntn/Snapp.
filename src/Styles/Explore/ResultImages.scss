@@ -1,56 +1,74 @@
 @import '../Variables.scss';
 
 .ResultImages {
+    height: -webkit-fit-content;
+    height: -moz-fit-content;
     height: fit-content;
     padding-inline: $paddingInline;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
     justify-content: space-between;
 
     >.Loader {
+        height: -webkit-fit-content;
+        height: -moz-fit-content;
         height: fit-content;
     }
 
     .MansoryDiv {
-        // flex: none !important;
         width: calc((100vw - ($paddingInline * 2) - ($gap * 2)) / 3);
-        // div {
-        //     width: fit-content;
-        // }
     }
-
-    // [data-masonry-id="Masonry-:rd:"] {
-    //     justify-content: space-between !important;
-    // }
 
     .imageWrapper {
         width: calc((100vw - ($paddingInline * 2) - ($gap * 2)) / 3);
         margin-bottom: $gap;
+        -webkit-column-break-inside: avoid;
+        -moz-column-break-inside: avoid;
         break-inside: avoid;
         position: relative;
         overflow: hidden;
+        -webkit-transition: all 0.3s;
+        -o-transition: all 0.3s;
         transition: all 0.3s;
 
         >img {
             width: 100%;
+            -webkit-transition: all 0.3s;
+            -o-transition: all 0.3s;
             transition: all 0.3s;
+            cursor: url('../../assets/zoom-in.png'), -webkit-zoom-in;
             cursor: url('../../assets/zoom-in.png'), zoom-in;
         }
 
         >.userDetails {
             position: absolute;
-            // border: 1px solid red;
             left: 0;
             bottom: -50px;
             padding-inline: 10px;
             padding-bottom: 5px;
             width: 100%;
+            display: -webkit-box;
+            display: -ms-flexbox;
             display: flex;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
             align-items: center;
+            -webkit-box-pack: justify;
+            -ms-flex-pack: justify;
             justify-content: space-between;
+            -webkit-transition: all 0.3s;
+            -o-transition: all 0.3s;
             transition: all 0.3s;
 
             .user {
+                display: -webkit-box;
+                display: -ms-flexbox;
                 display: flex;
+                -webkit-box-align: center;
+                -ms-flex-align: center;
                 align-items: center;
 
                 img {
@@ -71,6 +89,8 @@
                 border: none;
                 border-radius: 2px;
                 padding-block: 5px;
+                -webkit-transition: all 0.3s;
+                -o-transition: all 0.3s;
                 transition: all 0.3s;
 
                 svg {
@@ -78,19 +98,15 @@
                     fill: black;
                 }
 
-                // &:hover {
-                //     // background-color: rgb(150, 94, 255);
-
-                //     svg {
-                //         fill: white;
-                //     }
-                // }
             }
         }
 
         &:hover {
             >img {
+                -webkit-filter: brightness(50%);
                 filter: brightness(50%);
+                -webkit-transform: scale(1.1);
+                -ms-transform: scale(1.1);
                 transform: scale(1.1);
             }
 
@@ -100,154 +116,55 @@
         }
     }
 
-    // img,
-    // .imageWrapper {
-
-    // }
-
-
-    // img {
-    //     z-index: 2;
-    //     // margin: 2.5px;
-    //     // &:hover {
-    //     //     filter: brightness(50%);
-    //     // }
-    // }
 
     @media screen and (max-width: 1140px) {
         padding-inline: $paddingInline;
 
-        // columns: 2;
         .MansoryDiv {
-            // flex: none !important;
-            // width: calc((100vw - ($paddingInline * 2) - ($gap * 2)) / 2);
-            // div {
-                width: fit-content;
-            // }
+            width: -webkit-fit-content;
+            width: -moz-fit-content;
+            width: fit-content;
         }
 
-        // img,
         .imageWrapper {
             width: calc((100vw - ($paddingInline * 2) - ($gap)) / 2);
         }
     }
+
     @media screen and (max-width: 900px) {
-            padding-inline: $paddingInlineRespinsive;
-            
+        padding-inline: $paddingInlineRespinsive;
+
         .MansoryDiv {
-            // flex: none !important;
             width: calc((100vw - ($paddingInlineRespinsive * 2) - ($gap * 2)) / 2);
-            // div {
-            //     width: fit-content;
-            // }
         }
 
-        // img,
         .imageWrapper {
             width: calc((100vw - ($paddingInlineRespinsive * 2) - ($gap)) / 2);
         }
     }
-    // @media screen and (max-width: 900px) {
-    //     padding-inline: $paddingInlineRespinsive;
-
-    //     // columns: 2;
-    //     .MansoryDiv {
-    //         // flex: none !important;
-    //         width: calc((100vw - ($paddingInline * 2) - ($gap * 2)) / 2);
-    //         // div {
-    //         //     width: fit-content;
-    //         // }
-    //     }
-
-    //     // img,
-    //     .imageWrapper {
-    //         width: calc((100vw - ($paddingInlineRespinsive * 2) - ($gap)) / 2);
-    //     }
-    // }
-
-    // @media screen and (max-width: 884px) {
-    // }
 
     @media screen and (max-width: 550px) {
-        // columns: 1;
+
         .MansoryDiv {
-            // flex: none !important;
             width: calc((100vw - ($paddingInline * 2) - ($gap * 2)));
-            // div {
-            //     width: fit-content;
-            // }
         }
 
         .imageWrapper {
             width: calc((100vw - ($paddingInlineRespinsive * 2)));
-            // margin-bottom: $gap;
-            // break-inside: avoid;
-            // position: relative;
-            // overflow: hidden;
-            // transition: all 0.3s;
-            // cursor: url('../../assets/zoom-in.png'), zoom-in;
-            // border: 1px solid red;
-    
-            // >img {
-            //     width: 100%;
-            //     transition: all 0.3s;
-            // }
-    
+
             >.userDetails {
                 position: relative;
-                // border: 1px solid red;
                 left: 0;
                 bottom: 0;
-                // padding-inline: 10px;
                 margin-block: 5px;
-                // width: 100%;
-                // display: flex;
-                // align-items: center;
-                // justify-content: space-between;
-                // transition: all 0.3s;
-    
-                // .user {
-                //     display: flex;
-                //     align-items: center;
-    
-                //     img {
-                //         width: 40px;
-                //         height: 40px;
-                //         border-radius: 50%;
-                //     }
-    
-                //     p {
-                //         margin-left: 10px;
-                //         text-align: center;
-                //     }
-                // }
-    
-                // button {
-                //     cursor: pointer;
-                //     background: rgb(255, 255, 255);
-                //     border: none;
-                //     border-radius: 10px;
-                //     padding-block: 5px;
-                //     transition: all 0.3s;
-    
-                //     svg {
-                //         width: 50px;
-                //         fill: black;
-                //     }
-    
-                //     // &:hover {
-                //     //     background-color: rgb(150, 94, 255);
-    
-                //     //     svg {
-                //     //         fill: white;
-                //     //     }
-                //     // }
-                // }
             }
-    
+
             &:hover {
                 >img {
+                    -webkit-filter: none;
                     filter: none;
+                    -webkit-transform: none;
+                    -ms-transform: none;
                     transform: none;
                 }
             }

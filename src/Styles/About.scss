@@ -3,8 +3,15 @@
 .About {
     min-height: calc(100vh - 165px);
     padding-inline: $paddingInline;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
     flex-direction: column;
+    -webkit-box-pack: space-evenly;
+    -ms-flex-pack: space-evenly;
     justify-content: space-evenly;
 
     @media screen and (max-width: 900px) {
@@ -24,7 +31,6 @@
     }
 
     ul {
-        // border: 1px solid red;
         margin-top: 20px;
         margin-bottom: 5px;
         display: block;
@@ -36,9 +42,6 @@
             margin: 10px;
             width: 100%;
 
-            // display: block;
-            // width: 360px;
-            // border: 1px solid yellow;
             &::marker {
                 color: red;
             }
@@ -48,7 +51,6 @@
                 text-transform: uppercase;
                 font-weight: bold;
                 margin-right: 10px;
-                // text-decoration: underline;
             }
         }
     }
@@ -64,7 +66,10 @@
     h3 {
         text-align: center;
         margin-top: 20px;
-        background: linear-gradient(to right, #6afdff, #ff8eec);;
+        background: -webkit-gradient(linear, left top, right top, from(#6afdff), to(#ff8eec));
+        background: -o-linear-gradient(left, #6afdff, #ff8eec);
+        background: linear-gradient(to right, #6afdff, #ff8eec);
+        -webkit-background-clip: text;
         background-clip: text;
         color: transparent;
     }

@@ -1,4 +1,3 @@
-import { useState, useEffect, useRef } from 'react'
 import '../../Styles/Home/MainSection.scss'
 import { NameDescObj } from '../../App.types'
 import FeatureImgText from './FeatureImgText'

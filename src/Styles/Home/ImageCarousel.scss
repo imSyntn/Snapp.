@@ -18,7 +18,7 @@
             margin-inline: 5px;
             overflow: hidden;
 
-            >img {
+            img {
                 height: 400px;
                 width: 400px;
                 object-fit: cover;
@@ -26,7 +26,7 @@
             }
 
             &:hover {
-                >img {
+                img {
                     transform: scale(1.2);
                 }
             }

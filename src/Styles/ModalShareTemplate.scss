@@ -1,25 +1,37 @@
 @import './Variables.scss';
 
 .userDetails-downloadLink {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
     justify-content: space-between;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
     align-items: center;
     width: 100%;
 
     p,
     h3 {
         text-shadow: 0px 0px 10px rgb(0, 0, 0);
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
         user-select: none;
     }
 
     >.userDetails {
+        display: -webkit-box;
+        display: -ms-flexbox;
         display: flex;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
         align-items: center;
 
         img {
             border: none;
             border-radius: 50%;
-            // object-fit: cover;
             width: 50px;
             margin-right: 20px;
         }
@@ -46,8 +58,14 @@
         position: relative;
 
         button {
+            display: -webkit-box;
+            display: -ms-flexbox;
             display: flex;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
             align-items: center;
+            -webkit-box-pack: center;
+            -ms-flex-pack: center;
             justify-content: center;
             width: 120px;
             height: 40px;
@@ -74,10 +92,16 @@
 
             >p {
                 font-size: 1.03rem;
+                display: -webkit-box;
+                display: -ms-flexbox;
                 display: flex;
+                -webkit-box-pack: justify;
+                -ms-flex-pack: justify;
                 justify-content: space-between;
                 margin-block: 15px;
                 cursor: pointer;
+                -webkit-transition: all 0.1s;
+                -o-transition: all 0.1s;
                 transition: all 0.1s;
 
                 &:hover {
@@ -106,13 +130,8 @@
     }
 }
 
-// .imgWrapperDiv {
-//     margin-block: 10px;
-//     padding: 0px !important;
-
-// height: fit-content;
 .ModalImage {
-    // height: calc(100vh - 50px - 20px - 140px);
+    cursor: url('../assets/zoom-in.png') 12 12, -webkit-zoom-in;
     cursor: url('../assets/zoom-in.png') 12 12, zoom-in;
 
     @media screen and (max-width: 900px) {
@@ -120,8 +139,6 @@
         height: auto !important;
     }
 }
-
-// }
 
 #verticalImg {
     @media screen and (max-width: 900px) {
@@ -134,12 +151,14 @@
 }
 
 .imageDetails {
-    // border: 1px solid red;
     width: 100%;
 
     p,
     h3 {
         text-shadow: 0px 0px 10px rgb(0, 0, 0);
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
         user-select: none;
     }
 
@@ -149,8 +168,13 @@
     }
 
     >.variableData {
+        display: -webkit-box;
+        display: -ms-flexbox;
         display: flex;
+        -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
         justify-content: space-between;
+        -ms-flex-wrap: wrap;
         flex-wrap: wrap;
         margin-bottom: 10px;
 
@@ -164,8 +188,14 @@
             border: none;
             border-radius: 5px;
             font-size: 1.1rem;
+            display: -webkit-box;
+            display: -ms-flexbox;
             display: flex;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
             align-items: center;
+            -webkit-box-pack: center;
+            -ms-flex-pack: center;
             justify-content: center;
             cursor: pointer;
 
@@ -178,9 +208,13 @@
     }
 
     >.constantData {
-        // >.details {
+        display: -webkit-box;
+        display: -ms-flexbox;
         display: flex;
+        -ms-flex-wrap: wrap;
         flex-wrap: wrap;
+        -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
         justify-content: space-between;
 
         p {
@@ -218,21 +252,22 @@
                 width: 100%;
                 right: 0;
                 bottom: 35px;
-                // top: 0;
                 padding: 10px;
                 border: none;
                 border-radius: 5px;
 
                 >p {
                     font-size: 1.03rem;
+                    display: -webkit-box;
+                    display: -ms-flexbox;
                     display: flex;
+                    -webkit-box-pack: justify;
+                    -ms-flex-pack: justify;
                     justify-content: space-between;
                     margin-block: 5px;
                 }
             }
         }
-
-        // }
         @media screen and (max-width: 1000px) {
             margin-top: 15px;
 

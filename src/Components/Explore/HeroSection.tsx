@@ -1,4 +1,4 @@
-import { useRef, useState, useContext, useCallback, useEffect } from 'react'
+import { useRef, useState, useContext, useCallback } from 'react'
 import '../../Styles/Explore/HeroSection.scss'
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import { useFetch } from '../../Utils/useFetch';

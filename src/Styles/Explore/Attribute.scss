@@ -4,22 +4,30 @@
     left: 0px;
     height: 100dvh;
     width: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
     align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
     justify-content: center;
-    // backdrop-filter: blur(1px);
     background: #00000088;
+    -ms-scroll-chaining: none;
     overscroll-behavior: contain;
     z-index: 999;
 
     .attribute {
         position: relative;
         width: 360px;
-        // transform: translate(-50%, -50%);
         background-color: #fff;
+        -webkit-box-shadow: inset 50px 50px rgb(255, 106, 69);
         box-shadow: inset 50px 50px rgb(255, 106, 69);
         color: black;
         padding: 20px;
+        display: -webkit-box;
+        display: -ms-flexbox;
         display: flex;
         border: none;
         border-top-right-radius: 20px;
@@ -34,15 +42,25 @@
                 background: rgb(211, 211, 211);
                 margin-top: 10px;
                 padding: 5px 10px;
+                display: -webkit-box;
+                display: -ms-flexbox;
                 display: flex;
-                flex-wrap: nowrap;
-                justify-content: space-between;
-                align-items: center;
+                -ms-flex-wrap: nowrap;
+                    flex-wrap: nowrap;
+                -webkit-box-pack: justify;
+                -ms-flex-pack: justify;
+                        justify-content: space-between;
+                -webkit-box-align: center;
+                -ms-flex-align: center;
+                        align-items: center;
+
                 svg {
                     cursor: pointer;
                 }
+
                 p {
                     text-wrap: wrap;
+
                     a {
                         color: rgb(109, 109, 109);
                     }
@@ -67,22 +85,24 @@
         }
 
         h3 {
-            // em {
-                margin-bottom: 5px;
-                font-weight: 500;
-                &::after{
-                    content: '.';
-                    margin-left: 2px;
-                    animation: dot 1s linear infinite;
-                    @keyframes dot {
-                        50%{
-                            content: '..';
-                        }
-                        100%{
-                            content: '...';
-                        }
+            margin-bottom: 5px;
+            font-weight: 500;
+
+            &::after {
+                content: '.';
+                margin-left: 2px;
+                animation: dot 1s linear infinite;
+
+                @keyframes dot {
+                    50% {
+                        content: '..';
+                    }
+
+                    100% {
+                        content: '...';
                     }
                 }
+            }
         }
 
         p {

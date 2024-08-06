@@ -1,18 +1,20 @@
 @import '../Variables.scss';
 
 .HeroSection {
-    // height: 100px;
-    // border: 1px solid red;
 
     >.catagories {
         height: 60px;
         width: 100%;
-        // border: 1px solid greenyellow;
+        display: -webkit-box;
+        display: -ms-flexbox;
         display: flex;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
         align-items: center;
+        -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
         justify-content: space-between;
         position: relative;
-        // z-index: 5;
 
         // padding: 20px;
         >.slider {
@@ -20,17 +22,33 @@
             height: 60px;
             width: 50px;
             top: 50%;
+            -webkit-transform: translateY(-50%);
+            -ms-transform: translateY(-50%);
             transform: translateY(-50%);
             background: rgba(128, 128, 128, 0.132);
+            -webkit-backdrop-filter: blur(10px);
             backdrop-filter: blur(10px);
+            display: -webkit-box;
+            display: -ms-flexbox;
             display: flex;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
             align-items: center;
+            -webkit-box-pack: center;
+            -ms-flex-pack: center;
             justify-content: center;
             cursor: pointer;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
             user-select: none;
+            -webkit-transition: all 0.3s;
+            -o-transition: all 0.3s;
             transition: all 0.3s;
 
             &:active {
+                -webkit-transform: scale(0.85) translateY(-50%);
+                -ms-transform: scale(0.85) translateY(-50%);
                 transform: scale(0.85) translateY(-50%);
             }
 
@@ -49,6 +67,8 @@
 
         .topicsDiv {
             width: 100%;
+            display: -webkit-box;
+            display: -ms-flexbox;
             display: flex;
             overflow-x: auto;
             padding-inline: 20px;
@@ -64,6 +84,9 @@
 
             p {
                 text-wrap: nowrap;
+                -webkit-user-select: none;
+                -moz-user-select: none;
+                -ms-user-select: none;
                 user-select: none;
                 margin-inline: 15px;
                 cursor: pointer;
@@ -80,19 +103,22 @@
     }
 
     >.search-Text {
+        display: -webkit-box;
+        display: -ms-flexbox;
         display: flex;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
         align-items: center;
+        -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
         justify-content: space-between;
         padding: $paddingInline;
 
-        // border: 1px solid salmon;
         @media screen and (max-width: 900px) {
             padding: $paddingInlineRespinsive;
         }
 
         >.text {
-            // width: 400px;
-            // border: 1px solid orange;
 
             >h1 {
                 font-size: 3rem;
@@ -109,14 +135,15 @@
         >.searchDiv {
             width: 400px;
             height: 50px;
+            display: -webkit-box;
+            display: -ms-flexbox;
             display: flex;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
             align-items: center;
-            // border: 1px solid rgb(217, 255, 0);
             border-radius: 25px;
             background: #2f3640;
             overflow: hidden;
-            // outline: 2px solid #FEBF00;
-            // outline-offset: 3px;
 
             >input {
                 height: 100%;
@@ -127,6 +154,7 @@
                 padding-left: 20px;
                 color: gray;
                 background: #2f3640;
+
                 &::placeholder {
                     color: gray;
                 }
@@ -137,18 +165,23 @@
                 height: 45px;
                 border-radius: 50%;
                 background: #f47474;
+                background: -webkit-gradient(linear, left top, right top, from(#2AF598), to(#009EFD));
+                background: -o-linear-gradient(left, #2AF598 0%, #009EFD 100%);
                 background: linear-gradient(90deg, #2AF598 0%, #009EFD 100%);
+                display: -webkit-box;
+                display: -ms-flexbox;
                 display: flex;
+                -webkit-box-align: center;
+                -ms-flex-align: center;
                 align-items: center;
+                -webkit-box-pack: center;
+                -ms-flex-pack: center;
                 justify-content: center;
 
                 svg {
                     width: 30px;
                     height: 30px;
-                    // font-size: 30px;
                     margin-left: 3px;
-                    // margin-right: 5px;
-                    // fill: gray;
                     cursor: pointer;
                 }
 
@@ -169,15 +202,19 @@
                 }
             }
         }
+
         @media screen and (max-width: 600px) {
-            // // font-size: 2rem;
+            -webkit-box-orient: vertical;
+            -webkit-box-direction: normal;
+            -ms-flex-direction: column;
             flex-direction: column;
-            // margin-right: 10px;
+
             >.text {
                 >h1 {
                     margin: 0 0 10px 0;
                 }
             }
+
             >.searchDiv {
                 width: 100%;
             }

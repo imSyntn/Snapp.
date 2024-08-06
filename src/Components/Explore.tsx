@@ -1,4 +1,4 @@
-import { createContext, useState, useEffect } from 'react'
+import { createContext, useState } from 'react'
 import '../Styles/Explore/Explore.scss'
 import HeroSection from './Explore/HeroSection'
 import ResultImages from './Explore/ResultImages'

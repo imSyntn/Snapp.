@@ -1,9 +1,14 @@
 @import '../Variables.scss';
 
 .FeatureImgText {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
     padding-inline: $paddingInline;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
     justify-content: space-between;
+    -ms-flex-wrap: wrap;
     flex-wrap: wrap;
     width: 100%;
 
@@ -14,22 +19,32 @@
 
     .text {
         margin-top: 20px;
-        // width: 350px;
+        display: -webkit-box;
+        display: -ms-flexbox;
         display: flex;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: column;
         flex-direction: column;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
         justify-content: center;
+
         h1 {
             font-size: 40px;
         }
-        // border: 1px solid yellow;
+
     }
 
     &:nth-child(even) {
+        -webkit-box-orient: horizontal;
+        -webkit-box-direction: reverse;
+        -ms-flex-direction: row-reverse;
         flex-direction: row-reverse;
         margin-block: 30px;
 
     }
-    
+
     // @media screen and (max-width: 560px) {
     // }
 
@@ -41,8 +56,13 @@
         img {
             width: calc(100vw - ($paddingInlineRespinsive * 2));
         }
-        
+
+        -webkit-box-orient: vertical !important;
+        -webkit-box-direction: normal !important;
+        -ms-flex-direction: column !important;
         flex-direction: column !important;
+        -webkit-box-align: center !important;
+        -ms-flex-align: center !important;
         align-items: center !important;
     }
 }

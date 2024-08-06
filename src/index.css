@@ -22,7 +22,11 @@
   box-sizing: border-box;
   outline: 1px solid rgba(32, 254, 7, 0);
 }
+
 #no-selection {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
   user-select: none;
 }
 
@@ -40,4 +44,3 @@ body::-webkit-scrollbar {
   overflow-x: hidden;
   /* border: 5px solid red; */
 }
-

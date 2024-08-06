@@ -4,24 +4,31 @@
     position: fixed;
     top: 0;
     left: 0;
-    // transform: translateX(-50%);
     height: 100vh;
-    // border: 1px solid red;
     padding-inline: $paddingInline;
     width: 100%;
-    // background-color: #242424;
     z-index: 50;
     background-color: #242424ce;
+    -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
     padding-block: 10px;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
     flex-direction: column;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
     align-items: center;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
     justify-content: space-between;
     overflow-y: auto;
+    -ms-scroll-chaining: none;
     overscroll-behavior: contain;
 
-    // scroll-behavior: smooth;
     &::-webkit-scrollbar {
         display: none;
     }
@@ -41,6 +48,7 @@
         svg {
             font-size: 30px;
         }
+
         @media screen and (max-width: 1000px) {
             top: 5px;
             right: $paddingInlineRespinsive;

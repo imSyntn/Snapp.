@@ -14,7 +14,9 @@ const ImageCarousel = () => {
         {
           data.map((item) => (
             <div className='imagesContainer' key={item.id}>
-              <img src={item.urls.small} alt="" />
+              <div className="wrap" style={{backgroundColor: item.color}}>
+                <img src={item.urls.small} alt="" />
+              </div>
             </div>
           ))
         }

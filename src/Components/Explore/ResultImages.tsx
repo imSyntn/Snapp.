@@ -1,4 +1,4 @@
-import React, { Suspense, lazy, useCallback, useContext, useEffect, useState } from 'react'
+import React, { useCallback, useContext, useEffect, useState } from 'react'
 import '../../Styles/Explore/ResultImages.scss'
 import '../../Styles/Loader.scss'
 import { useFetch } from '../../Utils/useFetch'
@@ -131,10 +131,7 @@ const ResultImages = () => {
         )
       } */}
 
-      <div className='ResultImages' 
-      // style={{overflowX: 'hidden'}}
-      >
-
+      <div className='ResultImages'>
         {
           (results.length == 0) ? (
             <div className="Loader">
@@ -153,11 +150,7 @@ const ResultImages = () => {
                 ))
               }
               {
-                (results.length != 0) && (
-                  new Array(1).fill(1).map((item, index) => (
-                    <Loader key={index} />
-                  ))
-                )
+                (results.length != 0) && <Loader />
               }
             </Masonry>
           )

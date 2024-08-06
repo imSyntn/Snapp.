@@ -1,26 +1,36 @@
 main {
     padding-block: 100px;
-    // background: rgb(114, 85, 85);
 
 
     >.bannerWrapper {
         margin-top: 100px;
-        // border: 1px solid red;
         height: 250px;
         position: relative;
 
         >.banner {
             width: 90%;
             height: 90%;
-            // border: 1px solid red;
             position: absolute;
             top: 50%;
             left: 50%;
+            display: -webkit-box;
+            display: -ms-flexbox;
             display: flex;
+            -webkit-box-orient: vertical;
+            -webkit-box-direction: normal;
+            -ms-flex-direction: column;
             flex-direction: column;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
             align-items: center;
+            -webkit-box-pack: space-evenly;
+            -ms-flex-pack: space-evenly;
             justify-content: space-evenly;
+            -webkit-transform-origin: center;
+            -ms-transform-origin: center;
             transform-origin: center;
+            -webkit-transition: all 0.3s;
+            -o-transition: all 0.3s;
             transition: all 0.3s;
 
             >h1 {
@@ -44,16 +54,22 @@ main {
 
             &:nth-child(1) {
                 background: #007bffac;
+                -webkit-transform: translate(-50%, -50%) rotate(1deg);
+                -ms-transform: translate(-50%, -50%) rotate(1deg);
                 transform: translate(-50%, -50%) rotate(1deg);
             }
 
             &:nth-child(2) {
                 background: #FFFF00;
+                -webkit-transform: translate(-50%, -50%) rotate(-1deg);
+                -ms-transform: translate(-50%, -50%) rotate(-1deg);
                 transform: translate(-50%, -50%) rotate(-1deg);
             }
 
             &:nth-child(3) {
                 background: #ff8800ac;
+                -webkit-transform: translate(-50%, -50%) rotate(0deg);
+                -ms-transform: translate(-50%, -50%) rotate(0deg);
                 transform: translate(-50%, -50%) rotate(0deg);
             }
         }
@@ -61,25 +77,25 @@ main {
 
         &:hover {
             .banner {
-                // h1 {
-                //     // background-image: linear-gradient(to top, #ff0844 0%, #ffb199 100%);
-                //     background-image: linear-gradient(to right, #92fe9d 0%, #00c9ff 100%);
-                //     color: transparent;
-                //     background-clip: text;
-                // }
 
                 &:nth-child(1) {
                     background: #007bff;
+                    -webkit-transform: translate(-50%, -50%) rotate(3deg) skewX(-5deg);
+                    -ms-transform: translate(-50%, -50%) rotate(3deg) skewX(-5deg);
                     transform: translate(-50%, -50%) rotate(3deg) skewX(-5deg);
                 }
 
                 &:nth-child(2) {
                     background: #ff5e00;
+                    -webkit-transform: translate(-50%, -50%) rotate(-3deg) skewX(5deg);
+                    -ms-transform: translate(-50%, -50%) rotate(-3deg) skewX(5deg);
                     transform: translate(-50%, -50%) rotate(-3deg) skewX(5deg);
                 }
 
                 &:nth-child(3) {
                     background: white;
+                    -webkit-transform: translate(-50%, -50%) rotate(0deg) skewX(-5deg);
+                    -ms-transform: translate(-50%, -50%) rotate(0deg) skewX(-5deg);
                     transform: translate(-50%, -50%) rotate(0deg) skewX(-5deg);
                     color: black;
                 }
