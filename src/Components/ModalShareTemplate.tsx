@@ -1,5 +1,6 @@
 import React, { memo, useState, useEffect, useContext, useCallback } from 'react'
 import '../Styles/ModalShareTemplate.scss'
+import { Link } from 'react-router-dom'
 import { ResultProp } from '../App.types'
 import { useAbcType } from '../Utils/useAbcType';
 import { useDateTime } from '../Utils/useDateTime';
@@ -34,6 +35,7 @@ const ModalShareTemplate = ({ result }: { result: ResultProp }) => {
     // console.log('Modal Share Template', result)
 
     const getImageDownloader = useImageDownloader()
+
     // const { windowWidth } = useWindowResize()
     // const [imgStyle, setImgStyle] = useState({});
 
@@ -59,7 +61,7 @@ const ModalShareTemplate = ({ result }: { result: ResultProp }) => {
         setCopied(true)
     }
 
-    const triggerDownloadEndpoint = useCallback(()=>{
+    const triggerDownloadEndpoint = useCallback(() => {
         console.log('triggered Download Endpoint')
         const incrementDownload = async () => {
             try {
@@ -73,7 +75,7 @@ const ModalShareTemplate = ({ result }: { result: ResultProp }) => {
             }
         }
         incrementDownload()
-    },[result])
+    }, [result])
 
     useEffect(() => {
         setCopied(false)
@@ -128,7 +130,9 @@ const ModalShareTemplate = ({ result }: { result: ResultProp }) => {
             </div>
 
             {/* <div className='imgWrapperDiv' style={{backgroundColor: result.color}}> */}
-                <img onClick={() => window.open(`${window.location.origin}/fullScreenImage/${result.id}`, '_blank')} src={result.urls.regular} className='ModalImage' id={(result.height > result.width) ? 'verticalImg' : ''} alt={result.alt_description} style={{ aspectRatio: `${result.width / result.height}`, height: `calc(100vh - 220px)`, maxWidth: '772px' }} />
+            <Link to={`/fullScreenImage/${result.id}`} target='_blank'>
+                <img src={result.urls.regular} className='ModalImage' id={(result.height > result.width) ? 'verticalImg' : ''} alt={result.alt_description} style={{ aspectRatio: `${result.width / result.height}`, height: `calc(100vh - 220px)`, maxWidth: '772px' }} />
+            </Link>
             {/* </div> */}
 
             <div className="imageDetails">
