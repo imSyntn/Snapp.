@@ -45,7 +45,7 @@ function App() {
     if (downloadInitiated) {
       setTimeout(() => {
         setDownloadInitiated(false)
-      }, 2000)
+      }, 10000)
     }
   }, [downloadInitiated])
 
