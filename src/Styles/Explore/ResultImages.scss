@@ -23,8 +23,9 @@
     }
 
     .imageWrapper {
-        border-radius: 10px;
+        // border-radius: 5px;
         width: calc((100vw - ($paddingInline * 2) - ($gap * 2)) / 3);
+        height: auto;
         margin-bottom: $gap;
         -webkit-column-break-inside: avoid;
         -moz-column-break-inside: avoid;
@@ -37,7 +38,7 @@
 
         >img {
             width: 100%;
-            height: 100%;
+            // height: 100%;
             -webkit-transition: all 0.3s;
             -o-transition: all 0.3s;
             transition: all 0.3s;
@@ -48,6 +49,7 @@
         }
 
         >.userDetails {
+            // display: none;
             position: absolute;
             left: 0;
             bottom: -50px;
@@ -108,6 +110,7 @@
         }
 
         &:hover {
+            border-radius: 10px;
             >img {
                 -webkit-filter: brightness(50%);
                 filter: brightness(50%);
@@ -156,8 +159,13 @@
 
         .imageWrapper {
             width: calc((100vw - ($paddingInlineRespinsive * 2)));
+            // height: fit-content;
+            >img {
+                border-radius: 10px;
+            }
 
             >.userDetails {
+                // display: none;
                 position: relative;
                 left: 0;
                 bottom: 0;

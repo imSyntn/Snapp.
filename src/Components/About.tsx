@@ -12,6 +12,7 @@ const About = () => {
       <ul>
         <li><span>Discover:</span> Explore an extensive gallery of breathtaking photos sourced from Unsplash, a renowned community of photographers. Snapp’s sophisticated search functionality allows you to filter images by category, color, orientation, and more, ensuring you find exactly what you're looking for.</li>
         <li><span>Share:</span> Effortlessly share your favorite images with friends and family. With just a few clicks, you can spread inspiration and creativity, whether through social media, email, or direct links. Snapp simplifies the sharing process, making it quick and intuitive.</li>
+        <li><span>Seamless Download:</span> Snapp allows users to download high-quality images directly to their devices. Whether you're looking to save an image for offline viewing, include it in a presentation, or use it as part of a creative project, our seamless download feature makes it simple and straightforward.</li>
       </ul>
       <h2>Why Snapp?</h2>
       <p>We believe in the power of visuals to inspire and connect people. Snapp is built with simplicity and user experience in mind, ensuring that you can effortlessly find and enjoy the images that speak to you. Our integration with Unsplash guarantees that you always have access to a rich library of top-quality photos.</p>

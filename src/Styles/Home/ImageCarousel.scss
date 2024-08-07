@@ -10,6 +10,7 @@
         display: flex;
         position: absolute;
         top: 0;
+        // max-width: 100%;
         // overflow-x: hidden;
 
         .imagesContainer {
@@ -38,7 +39,7 @@
         margin-bottom: 5px;
         >.wrapper {
             left: 0;
-            animation: carousalAnimation1 200s linear infinite;
+            animation: carousalAnimation1 150s linear infinite;
         }
     }
 
@@ -50,7 +51,7 @@
             position: absolute;
             right: 0;
             // bottom: 0;
-            animation: carousalAnimation2 200s linear infinite;
+            animation: carousalAnimation2 150s linear infinite;
         }
     }
 
@@ -81,21 +82,21 @@
 
     @keyframes carousalAnimation1 {
         0% {
-            transform: translateX(0%);
+            transform: translateX(0);
         }
 
         100% {
-            transform: translateX(-100%);
+            transform: translateX(calc(-100% + 100vw));
         }
     }
 
     @keyframes carousalAnimation2 {
         0% {
-            transform: translateX(0%);
+            transform: translateX(0);
         }
 
         100% {
-            transform: translateX(100%);
+            transform: translateX(calc(100% - 100vw));
         }
     }
 }

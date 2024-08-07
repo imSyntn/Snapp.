@@ -13,6 +13,11 @@ const nameDescArr: NameDescObj[] = [
         name: 'Easy Sharing',
         desc: 'Share images with others easily',
         img: 'https://i.ibb.co/12wz6Ct/Connected-cuate.png"'
+    },
+    {
+        name: 'Seamless Download',
+        desc: 'Download high-quality images directly in your devices',
+        img: 'https://i.ibb.co/vP6wRwL/Download-cuate.png'
     }
 
     // {
@@ -28,8 +33,8 @@ const MainSection = () => {
         <main>
             <div className="featureBasedImageSection">
                 {
-                    nameDescArr.map((item)=> (
-                        <FeatureImgText key={item.name} img={item.img} name={item.name} desc={item.desc} />
+                    nameDescArr.map((item, index)=> (
+                        <FeatureImgText key={item.name} img={item.img} name={item.name} desc={item.desc} index={index} />
                     ))
                 }
             </div>
@@ -39,7 +44,7 @@ const MainSection = () => {
                 <div className="banner"></div>
                 <div className="banner">
                     <h1>Discover Beautiful Images</h1>
-                    <p>Easy Sharing.</p>
+                    <p>Easy Sharing, Seamless Download.</p>
                 </div>
             </div>
 
