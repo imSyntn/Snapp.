@@ -6,7 +6,7 @@ import ModalShareTemplate from '../ModalShareTemplate';
 
 
 const Modal = ({ result, setModalIndex }: { result: ResultProp, setModalIndex: Function }) => {
-    console.log(result)
+    // console.log(result)
 
     return (
             <div className='Modal' data-lenis-prevent>

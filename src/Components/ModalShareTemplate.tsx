@@ -1,4 +1,4 @@
-import React, { memo, useState, useEffect, useContext } from 'react'
+import React, { memo, useState, useEffect, useContext, useCallback } from 'react'
 import '../Styles/ModalShareTemplate.scss'
 import { ResultProp } from '../App.types'
 import { useAbcType } from '../Utils/useAbcType';
@@ -31,6 +31,8 @@ interface dropdownType {
 
 const ModalShareTemplate = ({ result }: { result: ResultProp }) => {
 
+    // console.log('Modal Share Template', result)
+
     const getImageDownloader = useImageDownloader()
     // const { windowWidth } = useWindowResize()
     // const [imgStyle, setImgStyle] = useState({});
@@ -56,6 +58,22 @@ const ModalShareTemplate = ({ result }: { result: ResultProp }) => {
         navigator.clipboard.writeText(shareableUrl)
         setCopied(true)
     }
+
+    const triggerDownloadEndpoint = useCallback(()=>{
+        console.log('triggered Download Endpoint')
+        const incrementDownload = async () => {
+            try {
+                const url = `${result.links.download_location}&client_id=${import.meta.env.VITE_ACCESS_KEY}`;
+                // console.log('url', url)
+                const req = await fetch(url)
+                const res = await req.json()
+                console.log('triggerDownloadEndpoint response', res)
+            } catch (error) {
+                console.log(error)
+            }
+        }
+        incrementDownload()
+    },[result])
 
     useEffect(() => {
         setCopied(false)
@@ -84,7 +102,8 @@ const ModalShareTemplate = ({ result }: { result: ResultProp }) => {
                             {result.user.social.twitter_username && <a target='_blank' href={`https://x.com/${result.user.social.twitter_username}`}><FaXTwitter /></a>}
                             {result.user.social.portfolio_url && <a target='_blank' href={result.user.social.portfolio_url}><TbWorldWww /></a>}
                             {result.user.social.paypal_email && <a target='_blank' href={result.user.social.paypal_email}><FaCcPaypal /></a>}
-                            <a href={result.user.links.html}><FaUnsplash /></a>
+                            {/* <a href={result.user.links.html}></a> */}
+                            <a href={`${result.user.links.html}?utm_source=Snapp&utm_medium=referral`} target='_blank'><FaUnsplash /></a>
                         </div>
                     </div>
                 </div>
@@ -97,6 +116,7 @@ const ModalShareTemplate = ({ result }: { result: ResultProp }) => {
                                     Object.entries(result.urls).map(([name, link]) => (
                                         <p key={name} onClick={() => {
                                             getImageDownloader(link, `${result.alt_description}.jpg`);
+                                            triggerDownloadEndpoint()
                                             setDownloadInitiated(result)
                                         }}>{name} <FiDownload /></p>
                                     ))

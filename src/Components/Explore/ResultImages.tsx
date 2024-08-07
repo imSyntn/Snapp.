@@ -95,7 +95,6 @@ const ResultImages = () => {
   useEffect(() => {
     const resizeFunction = () => {
       setUpdate(prev=> !prev)
-      console.log(1)
       //   setWindowWidth(document.body.clientWidth);
         
       // console.log('body', windowWidth)

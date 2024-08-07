@@ -1,4 +1,4 @@
-import { useState, useContext } from 'react'
+import { useState, useContext, useCallback } from 'react'
 import { useImageDownloader } from '../../Utils/useImageDownloader'
 // import { useWindowResize } from '../../Utils/useWindowResize';
 import { FaDownload } from "react-icons/fa6";
@@ -17,6 +17,22 @@ const ImageComponent = ({ item, index, clickEvent, showUserDetails }: { item: Re
     const { setDownloadInitiated } = attributeContext
 
     const [imageLoaded, setImageLoaded] = useState<boolean>(false)
+
+    const triggerDownloadEndpoint = useCallback(()=>{
+        console.log('triggered Download Endpoint')
+        const incrementDownload = async () => {
+            try {
+                const url = `${item.links.download_location}&client_id=${import.meta.env.VITE_ACCESS_KEY}`;
+                console.log('url', url)
+                const req = await fetch(url)
+                const res = await req.json()
+                console.log('triggerDownloadEndpoint response', res)
+            } catch (error) {
+                console.log(error)
+            }
+        }
+        incrementDownload()
+    },[item])
 
     // useEffect(()=> {
 
@@ -52,6 +68,7 @@ const ImageComponent = ({ item, index, clickEvent, showUserDetails }: { item: Re
                             <button className="downloadIcon" onClick={(e) => {
                                 e.stopPropagation()
                                 getImageDownloader(item.urls.raw || item.urls.full || item.urls.regular, `${item.alt_description}.jpg`)
+                                triggerDownloadEndpoint()
                                 setDownloadInitiated(item)
                             }}>
                                 <FaDownload />

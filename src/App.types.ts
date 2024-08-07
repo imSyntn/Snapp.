@@ -36,7 +36,10 @@ export interface ResultProp {
     downloads: string,
     views: number,
     user: UserProp,
-    links: { download: string },
+    links: {
+        download: string,
+        download_location: string
+    },
     location: {
         name: string | null,
         city: string | null,

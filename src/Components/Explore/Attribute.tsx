@@ -8,7 +8,7 @@ import { FaRegCopy } from "react-icons/fa6";
 
 const Attribute = ({ result }: { result: any }) => {
 
-    console.log(result)
+    // console.log(result)
 
     const attributeContext = useContext(downloadInitiatedContext)
     if(!attributeContext) {
@@ -31,7 +31,7 @@ const Attribute = ({ result }: { result: any }) => {
                         <h3>Downloading</h3>
                         <p>Give a shoutout to <span>{result.user.name}</span></p>
                         <div className="copy">
-                            <p>Photo by <a href={result.user.links.html} target='_blank'>{result.user.name}</a></p>
+                            <p>Photo by <a href={`${result.user.links.html}?utm_source=Snapp&utm_medium=referral`} target='_blank'>{result.user.name}</a> on <a href="https://unsplash.com/?utm_source=Snapp&utm_medium=referral" target='_blank'>Unsplash</a></p>                            
                             <FaRegCopy onClick={()=> {
                                 navigator.clipboard.writeText(`Photo by <a href=${result.user.links.html} target='_blank'>${result.user.name}</a>`)
                             }} />
