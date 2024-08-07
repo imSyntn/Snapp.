@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import { } from 'react'
 import HeroSection from './Home/HeroSection'
 import ImageCarousel from './Home/ImageCarousel'
 import MainSection from './Home/MainSection'

@@ -28,7 +28,7 @@ const MainSection = () => {
         <main>
             <div className="featureBasedImageSection">
                 {
-                    nameDescArr.map((item,index)=> (
+                    nameDescArr.map((item)=> (
                         <FeatureImgText key={item.name} img={item.img} name={item.name} desc={item.desc} />
                     ))
                 }

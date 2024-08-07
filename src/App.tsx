@@ -42,11 +42,11 @@ function App() {
 
   useEffect(() => {
     // console.log(downloadInitiated)
-    // if (downloadInitiated) {
-    //   setTimeout(() => {
-    //     setDownloadInitiated(false)
-    //   }, 2000)
-    // }
+    if (downloadInitiated) {
+      setTimeout(() => {
+        setDownloadInitiated(false)
+      }, 2000)
+    }
   }, [downloadInitiated])
 
   return (

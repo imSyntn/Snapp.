@@ -13,10 +13,8 @@ const ImageCarousel = () => {
       <div className="wrapper">
         {
           data.map((item) => (
-            <div className='imagesContainer' key={item.id}>
-              <div className="wrap" style={{backgroundColor: item.color}}>
-                <img src={item.urls.small} alt="" />
-              </div>
+            <div className='imagesContainer' key={item.id} style={{ backgroundColor: item.color || 'gray' }}>
+              <img src={item.urls.small} alt="" />
             </div>
           ))
         }

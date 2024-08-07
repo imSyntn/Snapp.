@@ -1,4 +1,4 @@
-import React, { useContext, memo } from 'react'
+import { useContext, memo } from 'react'
 import '../../Styles/Explore/Attribute.scss'
 import { RxCross2 } from "react-icons/rx";
 import { motion, AnimatePresence } from 'framer-motion'
