@@ -22,11 +22,10 @@ export const useFetch = (prop: string) => {
                     }
                 });
                 const res = await req.json()
-                // if()
                 setData(res.results || res)
             } catch (error) {
                 setError(true)
-                console.log(error)
+                console.log('error',error)
             } finally {
                 setLoading(false)
             }

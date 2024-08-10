@@ -1,4 +1,4 @@
-import { useRef, useState, useContext, useCallback } from 'react'
+import { useRef, useState, useContext, useCallback, useEffect } from 'react'
 import '../../Styles/Explore/HeroSection.scss'
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import { useFetch } from '../../Utils/useFetch';
@@ -77,6 +77,12 @@ const HeroSection = () => {
     //     }, { capture: true })
     // }, [])
 
+    useEffect(()=> {
+        if(data.length==0) {
+            alert("API limit exceed.")
+        }
+    },[data])
+
     return (
         <div className='HeroSection'>
             <div className="catagories" 
@@ -85,7 +91,7 @@ const HeroSection = () => {
                 <div className="slider" style={(!showLeftRight.left) ? { display: 'none' } : {}} onClick={() => arrowScrollAnimation('-')}><FaChevronLeft /></div>
                 <div className="topicsDiv" ref={topicsDivRef}>
                     {
-                        !loading && data.map((item, index) => (
+                        (!loading && data.length > 0)&& data.map((item, index) => (
                             <motion.p key={item.title + index}
                                 onClick={() => setSearch({
                                     topic: {

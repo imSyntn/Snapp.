@@ -77,7 +77,7 @@ const ResultImages = () => {
   }, [id, searchVal])
 
   useEffect(() => {
-    setResults(prev => ([...prev, ...data]))
+    if(data.length > 0) setResults(prev => ([...prev, ...data]))
     // console.log(data)
   }, [data])
 
