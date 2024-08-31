@@ -78,7 +78,7 @@ const HeroSection = () => {
     // }, [])
 
     useEffect(()=> {
-        if(data.length==0) {
+        if(!loading && data.length==0) {
             alert("API limit exceed.")
         }
     },[data])

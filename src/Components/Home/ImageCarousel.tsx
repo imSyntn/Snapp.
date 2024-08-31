@@ -5,11 +5,11 @@ import { useFetch } from '../../Utils/useFetch'
 
 const ImageCarousel = () => {
 
-  const { data } = useFetch(`https://api.unsplash.com/photos/random?count=20&client_id=${import.meta.env.VITE_ACCESS_KEY}`)
+  const { loading, data } = useFetch(`https://api.unsplash.com/photos/random?count=20&client_id=${import.meta.env.VITE_ACCESS_KEY}`)
 
 
   useEffect(() => {
-    if (data.length == 0) {
+    if (!loading && data.length == 0) {
       alert("API limit exceed.")
     }
   }, [data])
