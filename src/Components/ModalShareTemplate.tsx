@@ -105,7 +105,7 @@ const ModalShareTemplate = ({ result }: { result: ResultProp }) => {
                             {result.user.social.portfolio_url && <a target='_blank' href={result.user.social.portfolio_url}><TbWorldWww /></a>}
                             {result.user.social.paypal_email && <a target='_blank' href={result.user.social.paypal_email}><FaCcPaypal /></a>}
                             {/* <a href={result.user.links.html}></a> */}
-                            <a href={`${result.user.links.html}?utm_source=Snapp&utm_medium=referral`} target='_blank'><FaUnsplash /></a>
+                            <a href={`${result.user.links.html}?utm_source=Snapp!&utm_medium=referral`} target='_blank'><FaUnsplash /></a>
                         </div>
                     </div>
                 </div>
