@@ -85,7 +85,7 @@ Please make sure to follow the [Code of Conduct](CODE_OF_CONDUCT.md) while contr
 
 ## Connect with Us
 
-- Website: [Snapp](snapp-it.vercel.app)
+- Website: [Snapp](https://snapp-it.vercel.app)
 - Contact: [imsyntn@gmail.com](imsyntn@gmail.com)
 - Follow us on [Twitter](https://twitter.com/PublicAPIHub) for the latest updates.
 
